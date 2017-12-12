@@ -56,12 +56,7 @@ public abstract class Adventurer {
                 return enableTiles;
 	}
 
-	public Tile getTuileDispo() {
-		// TODO - implement Player.getTuileDispo
-		throw new UnsupportedOperationException();
-	}
-
-        	public void move(Tile tile) {
+        public void move(Tile tile) {
 		// TODO - implement Player.move
 		throw new UnsupportedOperationException();
 	}
@@ -80,9 +75,8 @@ public abstract class Adventurer {
 		return this.hasDry;
 	}
 
-	public void getCoords() {
-		// TODO - implement Player.getCoords
-		throw new UnsupportedOperationException();
+	public Coords getCoords() {
+		return currentTile.getCoords();
 	}
 
 
