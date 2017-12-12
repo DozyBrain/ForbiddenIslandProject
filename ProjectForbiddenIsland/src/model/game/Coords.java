@@ -2,23 +2,14 @@ package model.game;
 
 public class Coords {
 
-	private Tile tile;
 	private int x;
 	private int y;
 
-    /**
-     * @return the tile
-     */
-    public Tile getTile() {
-        return tile;
-    }
-
-    /**
-     * @param tile the tile to set
-     */
-    public void setTile(Tile tile) {
-        this.tile = tile;
-    }
+        public Coords (int x, int y) {
+            setX(x);
+            setY(y);
+        }
+        
 
     /**
      * @return the x

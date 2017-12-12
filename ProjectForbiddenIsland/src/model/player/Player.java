@@ -38,7 +38,10 @@ public class Player {
 	 */
 	public ArrayList<Tile> getReachableTiles(HashMap<Coords, Tile> tiles) {
 		Coords coords = currentTile.getCoords();
-                coords.
+                Coords south = new Coords();
+                Coords north = new Coords();
+                Coords east = new Coords();
+                Coords west = new Coords();
                 ArrayList<Tile> enableTiles = new ArrayList<>();
                 for (int x = 0; x < 5; x++) {
                     for (int y = 0; y < 5; y++) {
