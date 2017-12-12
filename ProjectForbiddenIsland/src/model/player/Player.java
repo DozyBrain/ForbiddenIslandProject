@@ -22,13 +22,11 @@ public class Player {
 	}
 
 	public Adventurer getAdventurer() {
-		// TODO - implement Player.getAdventurer
-		throw new UnsupportedOperationException();
+
 	}
 
 	public void decreaseActions() {
-		// TODO - implement Player.decreaseActions
-		throw new UnsupportedOperationException();
+
 	}
 
 	/**
