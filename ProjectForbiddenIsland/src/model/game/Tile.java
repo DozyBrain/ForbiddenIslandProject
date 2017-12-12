@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Tile {
 
-	Coords coords;
+	private Coords coords;
 	Collection<Player> playersOn;
 	private State currentState;
 	private TileName name;
@@ -28,5 +28,33 @@ public class Tile {
 		// TODO - implement Tile.movePawn
 		throw new UnsupportedOperationException();
 	}
+
+    /**
+     * @return the coords
+     */
+    public Coords getCoords() {
+        return coords;
+    }
+
+    /**
+     * @param coords the coords to set
+     */
+    public void setCoords(Coords coords) {
+        this.coords = coords;
+    }
+
+    /**
+     * @return the name
+     */
+    public TileName getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(TileName name) {
+        this.name = name;
+    }
 
 }

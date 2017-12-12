@@ -1,5 +1,8 @@
 package model.player;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import model.game.*;
 import model.adventurers.*;
 
@@ -22,26 +25,36 @@ public class Player {
 	}
 
 	public Adventurer getAdventurer() {
-
+            return role;
 	}
 
 	public void decreaseActions() {
-
+            numberActionEnable--;
 	}
 
 	/**
 	 * 
 	 * @param coords
 	 */
-	public Collection<Tuile> getEnableTiles(Coords coords) {
-		// TODO - implement Player.getEnableTiles
-		throw new UnsupportedOperationException();
+	public ArrayList<Tile> getReachableTiles(HashMap<Coords, Tile> tiles) {
+		Coords coords = currentTile.getCoords();
+                coords.
+                ArrayList<Tile> enableTiles = new ArrayList<>();
+                for (int x = 0; x < 5; x++) {
+                    for (int y = 0; y < 5; y++) {
+                        if (tiles.containsKey(coords)) {
+                            enableTiles.add(tiles.get(coords));
+                        }
+                    }
+                }
+                
+                 
 	}
 
-	public void getReachableTiles() {
-		// TODO - implement Player.getReachableTiles
-		throw new UnsupportedOperationException();
-	}
+//	public void getEnableTiles() {
+//		// TODO - implement Player.getReachableTiles
+//		throw new UnsupportedOperationException();
+//	}
 
 	public Tile getTuileDispo() {
 		// TODO - implement Player.getTuileDispo
