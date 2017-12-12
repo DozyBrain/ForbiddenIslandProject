@@ -3,7 +3,7 @@ import java.util.*;
 public class Game {
 
 	Collection<Player> player;
-	Controler controler;
+	Controller controler;
 
 	/**
 	 * 

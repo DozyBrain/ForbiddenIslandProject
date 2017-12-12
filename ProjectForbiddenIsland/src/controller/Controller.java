@@ -1,4 +1,4 @@
-public class Controler {
+public class Controller {
 
 	View View;
 	ViewAdventurer ViewAdventurer;
