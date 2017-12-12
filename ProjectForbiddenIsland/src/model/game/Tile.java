@@ -1,3 +1,5 @@
+package model.game;
+
 import model.player.Player;
 import java.util.*;
 

@@ -1,5 +1,5 @@
 package model.adventurers;
 
 
-public class Adventurer {
+public abstract class Adventurer {
 }

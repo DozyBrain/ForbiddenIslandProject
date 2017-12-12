@@ -1,3 +1,5 @@
+package model.game;
+
 import java.util.*;
 
 public class Grid {

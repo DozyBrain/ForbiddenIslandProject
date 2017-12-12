@@ -1,3 +1,5 @@
+package model.game;
+
 public class Coords {
 
 	Tile tile;
