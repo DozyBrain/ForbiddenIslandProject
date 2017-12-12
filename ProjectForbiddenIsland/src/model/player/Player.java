@@ -1,3 +1,8 @@
+package model.player;
+
+import model.game.*;
+import model.adventurers.*;
+
 public class Player {
 
 	Game game;

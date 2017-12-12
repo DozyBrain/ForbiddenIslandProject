@@ -1,3 +1,4 @@
+import model.player.Player;
 import java.util.*;
 
 public class Tile {

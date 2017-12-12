@@ -1,3 +1,6 @@
+package model.Game;
+
+import model.player.Player;
 import java.util.*;
 
 public class Game {
