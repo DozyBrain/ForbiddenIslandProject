@@ -1,33 +1,45 @@
 package model.game;
 
 import java.util.*;
+import static model.game.State.dried;
+
+
 
 public class Grid {
 
-    private HashMap<Coords, Tile> tiles;
-    
-    /**
-     * @return the tiles
-     */
-    public Collection<Tile> getTiles() {
-        return tiles;
-    }
+	HashMap<Coords,Tile> tiles;
 
-    /**
-     * @param tiles the tiles to set
-     */
-    public void setTiles(Collection<Tile> tiles) {
-        this.tiles = tiles;
-    }
-
-
-
+        public Grid() {
+            this.tiles = new HashMap();
+        }
+        
+        public void initGrid(){
+                int t =0;
+                int x =0;
+                int y =0;
+            for (int i=1; i<=36; ++i) {
+                
+                if(i==1 || i==2 || i==5 || i==6 || i==7 || i==12 || i==25 || i==30|| i==31 || i==32 | i==35 || i==36){
+                    
+                }else{
+                    tiles.put( new Coords(x,y),new Tile( new Coords(x,y),dried,TileName.getTileName(t)));
+                    t=t+1;
+                }
+                
+                x=(x+1)%6;
+                if(x==0){
+                    y=y+1;
+                }
+            }
+        }
+        
 	/**
 	 * 
 	 * @param coords
 	 */
 	public Tile getTile(Coords coords) {
-		return tiles.
+		// TODO - implement Grid.getTile
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -47,5 +59,16 @@ public class Grid {
 		// TODO - implement Grid.movePawn
 		throw new UnsupportedOperationException();
 	}
+
+    public void show() {
+        
+        //getKey() getValue() 
+        
+        for (Map.Entry<Coords,Tile> coords : tiles.entrySet()) {
+            if(coords.getValue() != null){
+            coords.getValue().show();
+            }
+        }
+    }
 
 }

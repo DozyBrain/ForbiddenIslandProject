@@ -6,9 +6,25 @@ import java.util.*;
 public class Tile {
 
 	private Coords coords;
-	private Collection<Player> playersOn;
+	Collection<Player> playersOn;
 	private State currentState;
 	private TileName name;
+
+        public Tile(Coords coords, State currentState, TileName name) {
+            this.coords = coords;
+            this.currentState = currentState;
+            this.name = name;
+        }
+        
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 */
+	public Tile getTiles(int x, int y) {
+		// TODO - implement Tile.getTiles
+		throw new UnsupportedOperationException();
+	}
 
 	/**
 	 * 
@@ -47,25 +63,25 @@ public class Tile {
         this.name = name;
     }
 
-    /**
-     * @return the playersOn
-     */
-    public Collection<Player> getPlayersOn() {
-        return playersOn;
-    }
-
-    /**
-     * @return the currentState
-     */
     public State getCurrentState() {
         return currentState;
     }
 
-    /**
-     * @param currentState the currentState to set
-     */
     public void setCurrentState(State currentState) {
         this.currentState = currentState;
+    }
+    
+    
+
+    public void show() {
+        System.out.println("Nom: ");
+        System.out.println(this.getName());
+        System.out.println("Etat: ");
+        System.out.println(this.getCurrentState());
+        System.out.println("Coord: ");
+        this.getCoords().show();
+        System.out.println("");
+        System.out.println("");
     }
 
 }

@@ -32,5 +32,17 @@ public enum TileName {
         this.name = name;
     }
     
+    public static TileName getTileName(int t){
+        TileName tile = null;
+        int i=0;
+        for (TileName ti : TileName.values()){
+            System.out.println(i);
+            if(t==i){
+                tile = ti;
+            }
+        }
+        return tile;
+    }
+    
     
 }
