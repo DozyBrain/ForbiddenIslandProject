@@ -39,4 +39,9 @@ public class Coords {
         this.y = y;
     }
 
+    public void show() {
+            System.out.println("x" +this.getX());
+            System.out.println("y" +this.getY());
+    }
+
 }
