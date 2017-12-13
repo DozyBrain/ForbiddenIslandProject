@@ -38,8 +38,7 @@ public class Grid {
 	 * @param coords
 	 */
 	public Tile getTile(Coords coords) {
-		// TODO - implement Grid.getTile
-		throw new UnsupportedOperationException();
+            return tiles.get(coords);
 	}
 
 	/**
@@ -47,8 +46,7 @@ public class Grid {
 	 * @param tile
 	 */
 	public void drie(Tile tile) {
-		// TODO - implement Grid.drie
-		throw new UnsupportedOperationException();
+            tile.setCurrentState(dried);
 	}
 
 	/**
@@ -61,8 +59,6 @@ public class Grid {
 	}
 
     public void show() {
-        
-        //getKey() getValue() 
         
         for (Map.Entry<Coords,Tile> coords : tiles.entrySet()) {
             if(coords.getValue() != null){
