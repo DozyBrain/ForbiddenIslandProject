@@ -1,7 +1,8 @@
 package model.game;
 
 import java.util.*;
-import static model.game.State.dried;
+import static model.game.State.*;
+import static model.game.TileName.*;
 
 
 
@@ -14,7 +15,7 @@ public class Grid {
         }
         
         public void initGrid(){
-                int t =0;
+                int t =1;
                 int x =0;
                 int y =0;
             for (int i=1; i<=36; ++i) {
@@ -23,6 +24,7 @@ public class Grid {
                     
                 }else{
                     tiles.put( new Coords(x,y),new Tile( new Coords(x,y),dried,TileName.getTileName(t)));
+                    System.out.println(TileName.getTileName(t));
                     t=t+1;
                 }
                 
@@ -33,6 +35,28 @@ public class Grid {
             }
         }
         
+        
+        public void initSpe(){
+            tiles.put( new Coords(0,0),null);
+            tiles.put( new Coords(1,0),null);
+            tiles.put( new Coords(0,1),null);
+            tiles.put( new Coords(0,4),null);
+            tiles.put( new Coords(0,5),null);
+            tiles.put( new Coords(1,5),null);
+            tiles.put( new Coords(4,0),null);
+            tiles.put( new Coords(4,5),null);
+            tiles.put( new Coords(5,0),null);
+            tiles.put( new Coords(5,1),null);
+            tiles.put( new Coords(5,4),null);
+            tiles.put( new Coords(5,5),null);
+            tiles.put( new Coords(0,2),new Tile( new Coords(0,2),dried,BREAKERS_BRIDGE));
+            tiles.put( new Coords(0,3),new Tile( new Coords(0,3),flooded,BRONZE_GATE));
+            tiles.put( new Coords(1,1),new Tile( new Coords(1,1),dried,CAVE_OF_SHADOWS));
+            tiles.put( new Coords(1,2),new Tile( new Coords(1,2),flooded,CAVE_OF_EMBERS));
+            tiles.put( new Coords(1,3),new Tile( new Coords(1,3),dried,CLIFFS_OF_ABANDON));
+            
+            
+        }
 	/**
 	 * 
 	 * @param coords
