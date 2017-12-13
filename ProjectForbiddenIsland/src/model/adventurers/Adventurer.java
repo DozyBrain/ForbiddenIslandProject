@@ -31,7 +31,7 @@ public abstract class Adventurer {
 	 */
 	public ArrayList<Tile> getReachableTiles(HashMap<Coords, Tile> tiles) {
             
-		Coords coords = currentTile.getCoords();
+		Coords coords = getCurrentTile().getCoords();
                 Coords south = new Coords(coords.getX(), coords.getY()+1);
                 Coords north = new Coords(coords.getX(), coords.getY()-1);
                 Coords east = new Coords(coords.getX()+1, coords.getY());
@@ -39,7 +39,7 @@ public abstract class Adventurer {
 
                 ArrayList<Tile> enableTiles = new ArrayList<>();
 
-                if (tiles.containsKey(south) || tiles.get(south).getCurrentState() != (State.gone)) {
+                if (tiles.containsKey(south) || tiles.get(south).getCurrentState() != State.gone) {
                     enableTiles.add(tiles.get(south));
                 } 
                 else if (tiles.containsKey(north) || tiles.get(north).getCurrentState() != State.gone) {
@@ -56,18 +56,35 @@ public abstract class Adventurer {
 	}
 
         public void move(Tile tile) {
-		// TODO - implement Player.move
-		throw new UnsupportedOperationException();
+		this.currentTile = tile;
 	}
 
 	public int getNbAction() {
-		// TODO - implement Player.getNbAction
-		throw new UnsupportedOperationException();
+            return this.numberActionEnable;
 	}
 
-	public void getDrieableTiles() {
-		// TODO - implement Player.getDrieableTiles
-		throw new UnsupportedOperationException();
+	public void getDrieableTiles(HashMap<Coords, Tile> tiles) {
+            Coords coords = getCurrentTile().getCoords();
+            Coords south = new Coords(coords.getX(), coords.getY()+1);
+            Coords north = new Coords(coords.getX(), coords.getY()-1);
+            Coords east = new Coords(coords.getX()+1, coords.getY());
+            Coords west = new Coords(coords.getX()-1, coords.getY());
+            
+            ArrayList<Tile> drieableTiles = new ArrayList<>();
+            
+            if (tiles.containsKey(south) || tiles.get(south).getCurrentState() != State.flooded) {
+                drieableTiles.add(tiles.get(south));
+            } 
+            else if (tiles.containsKey(north) || tiles.get(north).getCurrentState() != State.flooded) {
+                drieableTiles.add(tiles.get(north));
+            } 
+            else if (tiles.containsKey(east) || tiles.get(east).getCurrentState() != State.flooded) {
+                drieableTiles.add(tiles.get(east));
+            } 
+            else if (tiles.containsKey(west) || tiles.get(west).getCurrentState() != State.flooded) {
+                drieableTiles.add(tiles.get(west));
+            }
+            
 	}
 
 	public boolean getHasDry() {
@@ -75,11 +92,14 @@ public abstract class Adventurer {
 	}
 
 	public Coords getCoords() {
-		return currentTile.getCoords();
+		return getCurrentTile().getCoords();
 	}
 
-
-
-
+    /**
+     * @return the currentTile
+     */
+    public Tile getCurrentTile() {
+        return currentTile;
+    }
 
 }
