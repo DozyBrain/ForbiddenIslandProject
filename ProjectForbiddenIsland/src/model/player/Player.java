@@ -9,12 +9,12 @@ import model.adventurers.*;
 public class Player {
 
 	private Game game;
-	private Adventurer role;
+	private Adventurer adventurer;
 	private String pseudo;
 
 
 	public Adventurer getAdventurer() {
-            return role;
+            return adventurer;
 	}
 
 	public String getPseudo() {

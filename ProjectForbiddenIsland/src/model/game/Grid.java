@@ -4,15 +4,30 @@ import java.util.*;
 
 public class Grid {
 
-	Collection<Tile> tiles;
+    private HashMap<Coords, Tile> tiles;
+    
+    /**
+     * @return the tiles
+     */
+    public Collection<Tile> getTiles() {
+        return tiles;
+    }
+
+    /**
+     * @param tiles the tiles to set
+     */
+    public void setTiles(Collection<Tile> tiles) {
+        this.tiles = tiles;
+    }
+
+
 
 	/**
 	 * 
 	 * @param coords
 	 */
 	public Tile getTile(Coords coords) {
-		// TODO - implement Grid.getTile
-		throw new UnsupportedOperationException();
+		return tiles.
 	}
 
 	/**
