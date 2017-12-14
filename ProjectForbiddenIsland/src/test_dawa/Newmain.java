@@ -21,6 +21,7 @@ public class Newmain {
         Grid grille = new Grid();
         grille.initGrid();
         grille.show();
+           
     }
     
 }
