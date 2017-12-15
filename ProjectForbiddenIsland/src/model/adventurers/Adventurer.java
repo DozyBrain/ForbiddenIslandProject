@@ -11,6 +11,11 @@ public abstract class Adventurer {
     private boolean hasDry = false;
     private int numberActionEnable;
     private int numberActionMax = 3;
+    
+        protected Adventurer(Tile currentTile) {
+            setCurrentTile(currentTile);
+            setNumberActionEnable(numberActionMax);
+        }
 
     	public boolean isHasDry() {
 		return this.hasDry;
@@ -22,7 +27,7 @@ public abstract class Adventurer {
 
 
 	public void decreaseActions() {
-            numberActionEnable--;
+            setNumberActionEnable(getNumberActionEnable() - 1);
 	}
 
 	/**
@@ -56,11 +61,11 @@ public abstract class Adventurer {
 	}
 
         public void move(Tile tile) {
-		this.currentTile = tile;
+            this.setCurrentTile(tile);
 	}
 
 	public int getNbAction() {
-            return this.numberActionEnable;
+            return this.getNumberActionEnable();
 	}
 
 	public void getDrieableTiles(HashMap<Coords, Tile> tiles) {
@@ -100,6 +105,34 @@ public abstract class Adventurer {
      */
     public Tile getCurrentTile() {
         return currentTile;
+    }
+
+    /**
+     * @return the numberActionEnable
+     */
+    public int getNumberActionEnable() {
+        return numberActionEnable;
+    }
+
+    /**
+     * @param numberActionEnable the numberActionEnable to set
+     */
+    public void setNumberActionEnable(int numberActionEnable) {
+        this.numberActionEnable = numberActionEnable;
+    }
+
+    /**
+     * @return the numberActionMax
+     */
+    public int getNumberActionMax() {
+        return numberActionMax;
+    }
+
+    /**
+     * @param currentTile the currentTile to set
+     */
+    public void setCurrentTile(Tile currentTile) {
+        this.currentTile = currentTile;
     }
 
 }
