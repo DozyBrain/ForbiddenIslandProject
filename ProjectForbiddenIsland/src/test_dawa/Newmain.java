@@ -19,7 +19,7 @@ public class Newmain {
     public static void main(String[] args) {
         // TODO code application logic here
         Grid grille = new Grid();
-        grille.initGrid();
+        grille.initSpe();
         grille.show();
            
     }
