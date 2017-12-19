@@ -13,11 +13,11 @@ public abstract class Adventurer {
     private int numberActionMax = 3;
     
     // Cardinal Positions
-    Coords coords = getCurrentTile().getCoords();
-    Coords south = new Coords(coords.getX(), coords.getY()-1);
-    Coords north = new Coords(coords.getX(), coords.getY()+1);
-    Coords east = new Coords(coords.getX()+1, coords.getY());
-    Coords west = new Coords(coords.getX()-1, coords.getY());
+    Coords tile = getCurrentTile().getCoords();
+    Coords south = new Coords(tile.getX(), tile.getY()-1);
+    Coords north = new Coords(tile.getX(), tile.getY()+1);
+    Coords east = new Coords(tile.getX()+1, tile.getY());
+    Coords west = new Coords(tile.getX()-1, tile.getY());
     
         protected Adventurer(Tile currentTile) {
             setCurrentTile(currentTile);
@@ -60,8 +60,8 @@ public abstract class Adventurer {
             
             ArrayList<Tile> drieableTiles = new ArrayList<>();
             
-            if (tiles.containsKey(coords) || tiles.get(coords).getCurrentState() != State.flooded) {
-                drieableTiles.add(tiles.get(coords));
+            if (tiles.containsKey(tile) || tiles.get(tile).getCurrentState() != State.flooded) {
+                drieableTiles.add(tiles.get(tile));
             } 
             else if (tiles.containsKey(south) || tiles.get(south).getCurrentState() != State.flooded) {
                 drieableTiles.add(tiles.get(south));

@@ -9,10 +9,10 @@ import model.game.Tile;
 public class Explorer extends Adventurer {
 
         // diagonal positions
-        Coords topLeft = new Coords(coords.getX()-1, coords.getY()-1);
-        Coords topRight = new Coords(coords.getX()+1, coords.getY()-1);
-        Coords botLeft = new Coords(coords.getX()-1, coords.getY()+1);
-        Coords botRight = new Coords(coords.getX()+1, coords.getY()+1);
+        Coords topLeft = new Coords(tile.getX()-1, tile.getY()-1);
+        Coords topRight = new Coords(tile.getX()+1, tile.getY()-1);
+        Coords botLeft = new Coords(tile.getX()-1, tile.getY()+1);
+        Coords botRight = new Coords(tile.getX()+1, tile.getY()+1);
     
     public Explorer(Tile currentTile) {
         super(currentTile);
