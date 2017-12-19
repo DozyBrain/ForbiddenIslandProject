@@ -10,7 +10,7 @@ import model.player.Player;
 
 public class GameController {
     
-    	Collection<Player> player;
+    	ArrayList<Player> player;
 	ViewAdventurer ViewAdventurer;
 	View View;
 	Grid grid;
@@ -19,13 +19,21 @@ public class GameController {
             currentPlayer.getAdventurer().setCurrentTile(tile);
         }
         
-        public void movePawn(Tile tile) {    
-	}
+        public void dry(Tile tile){
+            tile.setCurrentState(State.dried);
+        }
         
+          
 //          Adventurer a = currentPlayer.getAdventurer();
 //          Tile adventurerTile = a.getCurrentTile();
 //          ArrayList<Tile> tileList = a.getReachableTiles(grid.getTiles());
         
-        public void 
+        public void gameTurn(Player currentPlayer){
+            while (currentPlayer.getAdventurer().getNumberActionEnable()>0){
+                // les différentes actions que le joueur peut faire
+                
+                
+            }
+        }
         
 }
