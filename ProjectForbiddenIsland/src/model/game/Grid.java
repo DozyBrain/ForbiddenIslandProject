@@ -8,7 +8,14 @@ import java.util.ArrayList;
 
 public class Grid {
 
-	HashMap<Coords,Tile> tiles;
+    /**
+     * @return the tiles
+     */
+    public HashMap<Coords,Tile> getTiles() {
+        return tiles;
+    }
+
+	private HashMap<Coords,Tile> tiles;
 
         public Grid() {
             this.tiles = new HashMap();
@@ -26,11 +33,8 @@ public class Grid {
                     
                 }else{
 
-                    tiles.put( new Coords(x,y),new Tile( new Coords(x,y),dried,name[t]));
+                    getTiles().put( new Coords(x,y),new Tile( new Coords(x,y),dried,name[t]));
                     System.out.println(name[t]);
-
-                    tiles.put( new Coords(x,y),new Tile( new Coords(x,y),dried,TileName.getTileName(t)));
-
                     t=t+1;
                 }
                 
@@ -62,13 +66,13 @@ public class Grid {
             
             //ligne 1
             tiles.put( new Coords(1,1),new Tile( new Coords(1,1),dried,CAVE_OF_SHADOWS));
-            tiles.put( new Coords(1,2),new Tile( new Coords(1,2),flooded,SILVER_GATE));
+            tiles.put( new Coords(1,2),new Tile( new Coords(1,2),flooded,IRON_GATE));
             tiles.put( new Coords(1,3),new Tile( new Coords(1,3),dried,GOLD_GATE));
             tiles.put( new Coords(1,4),new Tile( new Coords(1,4),dried,CLIFFS_OF_ABANDON));
  
             //ligne 2
             tiles.put( new Coords(2,0),new Tile( new Coords(2,0),dried,CORAL_PALACE));
-            tiles.put( new Coords(2,1),new Tile( new Coords(2,1),dried,IRON_GATE));
+            tiles.put( new Coords(2,1),new Tile( new Coords(2,1),dried,SILVER_GATE));
             tiles.put( new Coords(2,2),new Tile( new Coords(2,2),gone,DUNES_OF_DECEPTION));
             tiles.put( new Coords(2,3),new Tile( new Coords(2,3),dried,FOOLS_LANDING));
             tiles.put( new Coords(2,4),new Tile( new Coords(2,4),dried,COPPER_GATE));
@@ -100,8 +104,6 @@ public class Grid {
     public void show() {
      
         ArrayList<Tile> name =new ArrayList(tiles.values());
-        System.out.println("YOLOOOOOOOO");
-        System.out.println(name.size());
         for(int i =0; i< name.size();i++){
             if(name.get(i)!= null){
                 name.get(i).show();
