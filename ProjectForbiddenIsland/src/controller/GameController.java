@@ -21,17 +21,15 @@ public class GameController {
         
         public void dry(Tile tile){
             tile.setCurrentState(State.dried);
-        }
-        
+        }        
           
 //          Adventurer a = currentPlayer.getAdventurer();
 //          Tile adventurerTile = a.getCurrentTile();
 //          ArrayList<Tile> tileList = a.getReachableTiles(grid.getTiles());
         
         public void gameTurn(Player currentPlayer){
-            while (currentPlayer.getAdventurer().getNumberActionEnable()>0){                
                 
-            }
+
         }
         
 }

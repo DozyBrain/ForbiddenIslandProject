@@ -61,6 +61,6 @@ public class IHM {
     }
     
     private void loadMusiques(){
-        musiques.put("menu", new MediaPlayer(new Media(new File("src/Musiques/menu.mp3").toURI().toString())));
+        musiques.put("menu", new MediaPlayer(new Media(new File("src/Musics/menu.mp3").toURI().toString())));
     }
 }
