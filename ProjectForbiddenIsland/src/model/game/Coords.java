@@ -40,8 +40,8 @@ public class Coords {
     }
 
     public void show() {
-            System.out.println("x" +this.getX());
-            System.out.println("y" +this.getY());
+            System.out.println("x :" +this.getX());
+            System.out.println("y :" +this.getY());
     }
 
 }
