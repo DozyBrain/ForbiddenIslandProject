@@ -52,10 +52,6 @@ public abstract class Adventurer {
             return enableTiles;
 	}
 
-        public void move(Tile tile) {
-            this.setCurrentTile(tile);
-	}
-
 	public int getNbAction() {
             return this.getNumberActionEnable();
 	}
