@@ -3,7 +3,7 @@ package model.game;
 import java.util.*;
 import static model.game.State.*;
 import static model.game.TileName.*;
-
+import java.util.ArrayList;
 
 
 public class Grid {
@@ -62,25 +62,25 @@ public class Grid {
             
             //ligne 1
             tiles.put( new Coords(1,1),new Tile( new Coords(1,1),dried,CAVE_OF_SHADOWS));
-            tiles.put( new Coords(1,2),new Tile( new Coords(1,2),flooded,CAVE_OF_EMBERS));
-            tiles.put( new Coords(1,3),new Tile( new Coords(1,3),dried,CLIFFS_OF_ABANDON));
-            tiles.put( new Coords(1,4),new Tile( new Coords(1,4),dried,COPPER_GATE));
+            tiles.put( new Coords(1,2),new Tile( new Coords(1,2),flooded,SILVER_GATE));
+            tiles.put( new Coords(1,3),new Tile( new Coords(1,3),dried,GOLD_GATE));
+            tiles.put( new Coords(1,4),new Tile( new Coords(1,4),dried,CLIFFS_OF_ABANDON));
  
             //ligne 2
             tiles.put( new Coords(2,0),new Tile( new Coords(2,0),dried,CORAL_PALACE));
-            tiles.put( new Coords(2,1),new Tile( new Coords(2,1),dried,CRIMSON_FOREST));
+            tiles.put( new Coords(2,1),new Tile( new Coords(2,1),dried,IRON_GATE));
             tiles.put( new Coords(2,2),new Tile( new Coords(2,2),gone,DUNES_OF_DECEPTION));
             tiles.put( new Coords(2,3),new Tile( new Coords(2,3),dried,FOOLS_LANDING));
-            tiles.put( new Coords(2,4),new Tile( new Coords(2,4),dried,GOLD_GATE));
+            tiles.put( new Coords(2,4),new Tile( new Coords(2,4),dried,COPPER_GATE));
             tiles.put( new Coords(2,5),new Tile( new Coords(2,5),dried,HOWLING_GARDEN));
 
             //ligne 3
-            tiles.put( new Coords(3,0),new Tile( new Coords(3,0),dried,IRON_GATE));
+            tiles.put( new Coords(3,0),new Tile( new Coords(3,0),dried,CRIMSON_FOREST));
             tiles.put( new Coords(3,1),new Tile( new Coords(3,1),flooded,LOST_LAGOON));
             tiles.put( new Coords(3,2),new Tile( new Coords(3,2),dried,MISTY_MARSH));
             tiles.put( new Coords(3,3),new Tile( new Coords(3,3),flooded,OBSERVATORY));
             tiles.put( new Coords(3,4),new Tile( new Coords(3,4),gone,PHANTOM_ROCK));
-            tiles.put( new Coords(3,5),new Tile( new Coords(3,5),dried,SILVER_GATE));
+            tiles.put( new Coords(3,5),new Tile( new Coords(3,5),dried,CAVE_OF_EMBERS));
 
             //ligne 4
             tiles.put( new Coords(4,1),new Tile( new Coords(4,1),dried,TEMPLE_OF_THE_SUN));
@@ -89,7 +89,7 @@ public class Grid {
             tiles.put( new Coords(4,4),new Tile( new Coords(4,4),dried,TWILIGHT_HOLLOW));
 
             //ligne 5
-            tiles.put( new Coords(5,2),new Tile( new Coords(5,3),dried,WATCHTOWER));
+            tiles.put( new Coords(5,2),new Tile( new Coords(5,2),dried,WATCHTOWER));
             tiles.put( new Coords(5,3),new Tile( new Coords(5,3),flooded,WHISPERING_GARDEN));
             
             
@@ -98,20 +98,14 @@ public class Grid {
      
 
     public void show() {
+     
+        ArrayList<Tile> name =new ArrayList(tiles.values());
         System.out.println("YOLOOOOOOOO");
-        int i =1;         
-        for(int y =0; y<6;y++){
-            for(int x= 0; x<6; x++){
-                Coords coord = new Coords(x,y);
-                
-                        
-                if(i==1 || i==2 || i==5 || i==6 || i==7 || i==12 || i==25 || i==30|| i==31 || i==32 | i==35 || i==36){
-                    
-                }else{
-                    tiles.get(coord).show();
-                }
-                i++;
-            }
+        System.out.println(name.size());
+        for(int i =0; i< name.size();i++){
+            if(name.get(i)!= null){
+                name.get(i).show();
+            }         
         }
         
         
