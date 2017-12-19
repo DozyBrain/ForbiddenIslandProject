@@ -29,9 +29,7 @@ public class GameController {
 //          ArrayList<Tile> tileList = a.getReachableTiles(grid.getTiles());
         
         public void gameTurn(Player currentPlayer){
-            while (currentPlayer.getAdventurer().getNumberActionEnable()>0){
-                // les différentes actions que le joueur peut faire
-                
+            while (currentPlayer.getAdventurer().getNumberActionEnable()>0){                
                 
             }
         }
