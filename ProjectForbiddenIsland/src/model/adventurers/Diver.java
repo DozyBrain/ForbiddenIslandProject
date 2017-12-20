@@ -8,6 +8,15 @@ import model.game.Tile;
 
 public class Diver extends Adventurer {
 
+    /**
+     * @return the roleName
+     */
+    public String getRoleName() {
+        return roleName;
+    }
+
+    private final String roleName = "DIVER";
+    
     public Diver(Tile currentTile) {
         super(currentTile);
         
@@ -24,7 +33,7 @@ public class Diver extends Adventurer {
 //                Coords east = new Coords(coords.getX()+1, coords.getY());
 //                Coords west = new Coords(coords.getX()-1, coords.getY());
 //
-//                ArrayList<Tile> enableTiles = new ArrayList<>();
+                ArrayList<Tile> enableTiles = new ArrayList<>();
 //
 //                if (tiles.containsKey(south) || tiles.get(south).getCurrentState() != State.gone) {
 //                    enableTiles.add(tiles.get(south));
@@ -38,7 +47,8 @@ public class Diver extends Adventurer {
 //                else if (tiles.containsKey(west) || tiles.get(west).getCurrentState() != State.gone) {
 //                    enableTiles.add(tiles.get(west));
 //                }
-//
-//                return enableTiles;
-//        }
+
+                return enableTiles;
+    }
     
+}

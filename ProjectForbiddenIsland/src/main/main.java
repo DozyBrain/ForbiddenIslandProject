@@ -6,7 +6,12 @@
 package main;
 
 import Vue.IHM;
+import controller.GameController;
+import java.awt.Color;
 import java.io.IOException;
+import java.util.Map;
+import model.player.Player;
+import view.*;
 
 /**
  *
@@ -19,7 +24,14 @@ public class main {
      */
     public static void main(String[] args) throws IOException, InterruptedException {
         // TODO code application logic here
+            GameController gameController = new GameController();
             IHM ihm = new IHM();
+
+            
+            for (Map.Entry<String,Player> e : gameController.getPlayers().entrySet()){
+                Player currentPlayer = e.getValue();
+                ViewAdventurer viewAdventurer = new ViewAdventurer(currentPlayer.getPseudo(), currentPlayer.getAdventurer()., Color.yellow);
+            }
     }
     
 }

@@ -8,11 +8,19 @@ import model.game.Tile;
 
 public class Explorer extends Adventurer {
 
+    /**
+     * @return the roleName
+     */
+    public String getRoleName() {
+        return roleName;
+    }
+
+        private final String roleName = "EXPLORER";
         // diagonal positions
-        Coords topLeft = new Coords(coords.getX()-1, coords.getY()-1);
-        Coords topRight = new Coords(coords.getX()+1, coords.getY()-1);
-        Coords botLeft = new Coords(coords.getX()-1, coords.getY()+1);
-        Coords botRight = new Coords(coords.getX()+1, coords.getY()+1);
+        private Coords topLeft = new Coords(coords.getX()-1, coords.getY()-1);
+        private Coords topRight = new Coords(coords.getX()+1, coords.getY()-1);
+        private Coords botLeft = new Coords(coords.getX()-1, coords.getY()+1);
+        private Coords botRight = new Coords(coords.getX()+1, coords.getY()+1);
     
     public Explorer(Tile currentTile) {
         super(currentTile);

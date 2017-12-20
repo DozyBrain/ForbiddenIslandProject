@@ -12,7 +12,7 @@ import util.message.InGameMessage;
 
 public class GameController implements Observer {
     
-    	HashMap<String,Player> players;
+    	private HashMap<String,Player> players;
 	ViewAdventurer ViewAdventurer;
 	View View;
 	Grid grid;
@@ -23,7 +23,7 @@ public class GameController implements Observer {
         }
         
         public void dry(Tile tile){
-            tile.setCurrentState(State.dried);
+            tile.setCurrentState(State.DRIED);
         }        
           
 //          Adventurer a = currentPlayer.getAdventurer();
@@ -33,46 +33,57 @@ public class GameController implements Observer {
         public void gameTurn(Player currentPlayer){
 //            case () {
 //            
-//            } 
-            
+//            }  
         }
 
-    @Override
-    public void update(Observable arg0, Object arg1) {
-        if (arg1 instanceof InGameMessage) {
-            InGameMessage m = (InGameMessage) arg1;
-            
-            switch ((InGameAction) m.getType()) {
-            case SELECT_TILE:
-                doAction(m.getContent());
-                break;
-            case MOVE:
-                setMoveAction();
-                
-                break;
-            case GET_TREASURE:
-                
-                break;
-            case GIVE_CARD:
-                
-                break;
-            case DRY:
-                dry();
-                break;
-            case USE_CAPACITY:
-                setCapacityActionT();
-                break;
-            case USE_CARD:         
-                
-                break;
-            case END_TURN:
-                endTurn();
-                break;
-            
-            default:
-                break;
-}
-        
-        
-        
+        @Override
+        public void update(Observable arg0, Object arg1) {
+//            if (arg1 instanceof InGameMessage) {
+//                InGameMessage m = (InGameMessage) arg1;
+//
+//                switch ((InGameAction) m.getType()) {
+//                case SELECT_TILE:
+//                    doAction(m.getContent());
+//                    break;
+//                case MOVE:
+//                    setMoveAction();
+//
+//                    break;
+//                case GET_TREASURE:
+//
+//                    break;
+//                case GIVE_CARD:
+//
+//                    break;
+//                case DRY:
+//                    dry();
+//                    break;
+//                case USE_CAPACITY:
+//                    setCapacityActionT();
+//                    break;
+//                case USE_CARD:         
+//
+//                    break;
+//                case END_TURN:
+//                    endTurn();
+//                    break;
+//
+//                default:
+//                    break;
+//                }
+//        
+//            }    
+        }
+
+    /**
+     * @return the players
+     */
+    public HashMap<String,Player> getPlayers() {
+        return players;
+    }
+    
+    public void addPlayer(Player player) {
+        this.getPlayers().put(player.getPseudo(), player);
+    }
+    
 }

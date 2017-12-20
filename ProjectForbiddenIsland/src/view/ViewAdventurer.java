@@ -22,40 +22,37 @@ public class ViewAdventurer {
     private final JFrame window;
     private final JPanel panelAventurier;
     private final JPanel mainPanel;
-    private final JButton btnBouger  ;
-    private final JButton btnAssecher;
-    private final JButton btnAutreAction;
-    private final JButton btnTerminerTour;
+    private final JButton moveBtn  ;
+    private final JButton dryBtn;
+    private final JButton otherActionBtn;
+    private final JButton endTurnBtn;
     private JTextField position;
-   
-   
-   
-    
-    public VueAventurier(String nomJoueur, String nomAventurier, Color couleur){
+ 
+    public ViewAdventurer(String playerName, String adventurerName, Color color){
 
         this.window = new JFrame();
         window.setSize(350, 200);
         //le titre = nom du joueur 
-        window.setTitle(nomJoueur);
+        window.setTitle(playerName);
         mainPanel = new JPanel(new BorderLayout());
         this.window.add(mainPanel);
 
         mainPanel.setBackground(new Color(230, 230, 230));
-        mainPanel.setBorder(BorderFactory.createLineBorder(couleur, 2)) ;
+        mainPanel.setBorder(BorderFactory.createLineBorder(color, 2)) ;
 
         // =================================================================================
         // NORD : le titre = nom de l'aventurier sur la couleurActive du pion
 
         this.panelAventurier = new JPanel();
-        panelAventurier.setBackground(couleur);
-        panelAventurier.add(new JLabel(nomAventurier,SwingConstants.CENTER ));
+        panelAventurier.setBackground(color);
+        panelAventurier.add(new JLabel(adventurerName,SwingConstants.CENTER ));
         mainPanel.add(panelAventurier, BorderLayout.NORTH);
    
         // =================================================================================
         // CENTRE : 1 ligne pour position courante
         this.panelCentre = new JPanel(new GridLayout(2, 1));
         this.panelCentre.setOpaque(false);
-        this.panelCentre.setBorder(new MatteBorder(0, 0, 2, 0, couleur));
+        this.panelCentre.setBorder(new MatteBorder(0, 0, 2, 0, color));
         mainPanel.add(this.panelCentre, BorderLayout.CENTER);
         
         panelCentre.add(new JLabel ("Position", SwingConstants.CENTER));
@@ -70,15 +67,15 @@ public class ViewAdventurer {
         this.panelBoutons.setOpaque(false);
         mainPanel.add(this.panelBoutons, BorderLayout.SOUTH);
 
-        this.btnBouger = new JButton("Bouger") ;
-        this.btnAssecher = new JButton( "Assecher");
-        this.btnAutreAction = new JButton("AutreAction") ;
-        this.btnTerminerTour = new JButton("Terminer Tour") ;
+        this.moveBtn = new JButton("Bouger") ;
+        this.dryBtn = new JButton( "Assecher");
+        this.otherActionBtn = new JButton("AutreAction") ;
+        this.endTurnBtn = new JButton("Terminer Tour") ;
         
-        this.panelBoutons.add(btnBouger);
-        this.panelBoutons.add(btnAssecher);
-        this.panelBoutons.add(btnAutreAction);
-        this.panelBoutons.add(btnTerminerTour);
+        this.panelBoutons.add(moveBtn);
+        this.panelBoutons.add(dryBtn);
+        this.panelBoutons.add(otherActionBtn);
+        this.panelBoutons.add(endTurnBtn);
 
         this.window.setVisible(true);
     } 
@@ -87,28 +84,28 @@ public class ViewAdventurer {
         this.position.setText(pos);
     }
     
-     public JButton getBtnAutreAction() {
-        return btnAutreAction;
+     public JButton getOthersActionBtn() {
+        return otherActionBtn;
     }
     
     public String getPosition() {
         return position.getText();
     }
 
-    public JButton getBtnBouger() {
-        return btnBouger;
+    public JButton getMoveBtn() {
+        return moveBtn;
     }
     
-    public JButton getBtnAssecher() {
-        return btnAssecher;
+    public JButton getDryBtn() {
+        return dryBtn;
     }
 
-    public JButton getBtnTerminerTour() {
-        return btnTerminerTour;
+    public JButton getEndTurnBtn() {
+        return endTurnBtn;
     }
  
      public static void main(String [] args) {
         // Instanciation de la fenêtre 
-        VueAventurier vueAventurier = new VueAventurier("Manon", "Explorateur",Pion.ROUGE.getCouleur() );
+        ViewAdventurer viewAdventurer = new ViewAdventurer("Manon", "Explorateur",Pion.ROUGE.getCouleur() );
     }
 }

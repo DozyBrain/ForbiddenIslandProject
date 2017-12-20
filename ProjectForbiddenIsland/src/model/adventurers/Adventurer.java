@@ -8,16 +8,15 @@ import model.game.*;
 public abstract class Adventurer {
 
     private Tile currentTile;
-
     private int numberActionEnable;
     private int numberActionMax = 3;
     
     // Cardinal Positions
-    Coords coords = getCurrentTile().getCoords();
-    Coords south = new Coords(coords.getX(), coords.getY()-1);
-    Coords north = new Coords(coords.getX(), coords.getY()+1);
-    Coords east = new Coords(coords.getX()+1, coords.getY());
-    Coords west = new Coords(coords.getX()-1, coords.getY());
+    protected Coords coords = getCurrentTile().getCoords();
+    protected Coords south = new Coords(coords.getX(), coords.getY()-1);
+    protected Coords north = new Coords(coords.getX(), coords.getY()+1);
+    protected Coords east = new Coords(coords.getX()+1, coords.getY());
+    protected Coords west = new Coords(coords.getX()-1, coords.getY());
     
         protected Adventurer(Tile currentTile) {
             setCurrentTile(currentTile);
