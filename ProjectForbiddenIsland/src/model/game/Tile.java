@@ -6,7 +6,7 @@ import java.util.*;
 public class Tile {
 
 	private Coords coords;
-	Collection<Player> playersOn;
+	private ArrayList<Player> playersOn;
 	private State currentState;
 	private TileName name;
 
@@ -14,6 +14,7 @@ public class Tile {
             this.coords = coords;
             this.currentState = currentState;
             this.name = name;
+            playersOn = new ArrayList<>();
         }
         
 	/**
@@ -71,7 +72,9 @@ public class Tile {
         this.currentState = currentState;
     }
     
-    
+    public void addPlayerOn(Player player) {
+        this.getPlayersOn().add(player);
+    }
 
     public void show() {
         System.out.println("Nom: ");
@@ -82,6 +85,20 @@ public class Tile {
         this.getCoords().show();
         System.out.println("");
         System.out.println("");
+    }
+
+    /**
+     * @return the playersOn
+     */
+    public ArrayList<Player> getPlayersOn() {
+        return playersOn;
+    }
+
+    /**
+     * @param playersOn the playersOn to set
+     */
+    public void setPlayersOn(ArrayList<Player> playersOn) {
+        this.playersOn = playersOn;
     }
 
 }

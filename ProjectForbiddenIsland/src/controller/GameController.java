@@ -17,6 +17,7 @@ public class GameController {
 
         public void move(Tile tile, Player currentPlayer) {
             currentPlayer.getAdventurer().setCurrentTile(tile);
+            tile.addPlayerOn(currentPlayer);
         }
         
         public void dry(Tile tile){
@@ -29,7 +30,7 @@ public class GameController {
         
         public void gameTurn(Player currentPlayer){
                 
-
+            
         }
         
 }

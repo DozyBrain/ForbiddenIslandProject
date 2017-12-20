@@ -8,7 +8,7 @@ public class Engineer extends Adventurer {
 
     public Engineer(Tile currentTile) {
         super(currentTile);
-    }
+    } 
 
     public void setHasDry(boolean hasDry) {
         this.hasDry = hasDry;
