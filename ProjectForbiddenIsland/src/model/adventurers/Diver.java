@@ -5,12 +5,14 @@ import java.util.HashMap;
 import model.game.Coords;
 import model.game.State;
 import model.game.Tile;
+import model.player.Pawn;
 
 public class Diver extends Adventurer {
     
     public Diver(Tile currentTile) {
         super(currentTile);
         setRoleName("DIVER");
+        setPawn(new Pawn("BLACK"));
     }
     
         

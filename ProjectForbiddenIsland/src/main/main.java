@@ -30,6 +30,7 @@ public class main {
     public static void main(String[] args) throws IOException, InterruptedException {
         // TODO code application logic here
             GameController gameController = new GameController();
+            
             Tile tile = new Tile(new Coords(0, 0), State.DRIED, TileName.IRON_GATE);
             gameController.addPlayer(new Player(new Engineer(tile), "joueur1"));
             gameController.addPlayer(new Player(new Explorer(tile), "joueur2"));

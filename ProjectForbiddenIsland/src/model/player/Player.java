@@ -34,6 +34,5 @@ public class Player {
     public void setPseudo(String pseudo) {
         this.pseudo = pseudo;
     }
-
         
 }

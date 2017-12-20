@@ -1,6 +1,7 @@
 package model.adventurers;
 
 import model.game.Tile;
+import model.player.Pawn;
 
 public class Engineer extends Adventurer {
     
@@ -9,6 +10,7 @@ public class Engineer extends Adventurer {
     public Engineer(Tile currentTile) {
         super(currentTile);
         setRoleName("ENGINEER");
+        setPawn(new Pawn("RED"));
     } 
 
     public void setHasDry(boolean hasDry) {

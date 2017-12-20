@@ -3,6 +3,7 @@ package model.adventurers;
 import java.util.ArrayList;
 import java.util.HashMap;
 import model.game.*;
+import model.player.Pawn;
 
 
 public abstract class Adventurer {
@@ -11,17 +12,25 @@ public abstract class Adventurer {
     private int numberActionEnable;
     private int numberActionMax = 3;
     private String roleName = "";
+    private Pawn pawn = new Pawn("");
     
     // Cardinal Positions
-    protected Coords coords = getCurrentTile().getCoords();
-    protected Coords south = new Coords(coords.getX(), coords.getY()-1);
-    protected Coords north = new Coords(coords.getX(), coords.getY()+1);
-    protected Coords east = new Coords(coords.getX()+1, coords.getY());
-    protected Coords west = new Coords(coords.getX()-1, coords.getY());
+    protected Coords coords;
+    protected Coords south;
+    protected Coords north;
+    protected Coords east;
+    protected Coords west;
     
         protected Adventurer(Tile currentTile) {
             setCurrentTile(currentTile);
             setNumberActionEnable(numberActionMax);
+            
+            // P O S I T I O N   V A L U E S   S E T //
+            coords = getCurrentTile().getCoords();
+            south = new Coords(coords.getX(), coords.getY()-1);
+            north = new Coords(coords.getX(), coords.getY()+1);
+            east = new Coords(coords.getX()+1, coords.getY());
+            west = new Coords(coords.getX()-1, coords.getY());
         }
 
 	public void decreaseActions() {
@@ -123,6 +132,14 @@ public abstract class Adventurer {
     
     public void setRoleName(String name) {
         this.roleName = name;
+    }
+    
+    public Pawn getPawn(){
+        return this.pawn;
+    }
+    
+    public void setPawn(Pawn pawn) {
+        this.pawn = pawn;
     }
 
 }

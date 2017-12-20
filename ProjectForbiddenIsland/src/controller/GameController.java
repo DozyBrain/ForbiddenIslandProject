@@ -1,5 +1,6 @@
 package controller;
 
+import java.awt.Color;
 import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
@@ -13,9 +14,14 @@ import util.message.InGameMessage;
 public class GameController implements Observer {
     
     	private HashMap<String,Player> players;
-	ViewAdventurer ViewAdventurer;
-	View View;
+//	ViewAdventurer ViewAdventurer;
+//	View View;
 	Grid grid;
+        
+        public GameController (Grid grid) {
+            players = new HashMap<>();
+            setGrid(grid);
+        }
 
         public void move(Tile tile, Player currentPlayer) {
             currentPlayer.getAdventurer().setCurrentTile(tile);
@@ -84,6 +90,10 @@ public class GameController implements Observer {
     
     public void addPlayer(Player player) {
         this.getPlayers().put(player.getPseudo(), player);
+    }
+    
+    public void setGrid(Grid grid) {
+        this.grid = grid;
     }
     
 }

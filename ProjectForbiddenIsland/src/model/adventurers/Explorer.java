@@ -5,18 +5,25 @@ import java.util.HashMap;
 import model.game.Coords;
 import model.game.State;
 import model.game.Tile;
+import model.player.Pawn;
 
 public class Explorer extends Adventurer {
 
         // diagonal positions
-        private Coords topLeft = new Coords(coords.getX()-1, coords.getY()-1);
-        private Coords topRight = new Coords(coords.getX()+1, coords.getY()-1);
-        private Coords botLeft = new Coords(coords.getX()-1, coords.getY()+1);
-        private Coords botRight = new Coords(coords.getX()+1, coords.getY()+1);
+        private Coords topLeft;
+        private Coords topRight;
+        private Coords botLeft;
+        private Coords botRight;
     
     public Explorer(Tile currentTile) {
         super(currentTile);
         setRoleName("EXPLORER");
+        setPawn(new Pawn("GREEN"));
+        
+        topLeft = new Coords(coords.getX()-1, coords.getY()-1);
+        topRight = new Coords(coords.getX()+1, coords.getY()-1);
+        botLeft = new Coords(coords.getX()-1, coords.getY()+1);
+        botRight = new Coords(coords.getX()+1, coords.getY()+1);
     }
     
     @Override
