@@ -10,6 +10,7 @@ public abstract class Adventurer {
     private Tile currentTile;
     private int numberActionEnable;
     private int numberActionMax = 3;
+    private String roleName = "";
     
     // Cardinal Positions
     protected Coords coords = getCurrentTile().getCoords();
@@ -114,6 +115,14 @@ public abstract class Adventurer {
      */
     public void setCurrentTile(Tile currentTile) {
         this.currentTile = currentTile;
+    }
+    
+    public String getRoleName() {
+        return this.roleName;
+    }
+    
+    public void setRoleName(String name) {
+        this.roleName = name;
     }
 
 }

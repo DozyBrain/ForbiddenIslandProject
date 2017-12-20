@@ -5,10 +5,10 @@ import model.game.Tile;
 public class Engineer extends Adventurer {
     
     private boolean hasDry = false;
-    private final String roleName = "ENGINEER";
 
     public Engineer(Tile currentTile) {
         super(currentTile);
+        setRoleName("ENGINEER");
     } 
 
     public void setHasDry(boolean hasDry) {
@@ -17,13 +17,6 @@ public class Engineer extends Adventurer {
 
     public boolean getHasDry() {
             return this.hasDry;
-    }
-
-    /**
-     * @return the roleName
-     */
-    public String getRoleName() {
-        return roleName;
     }
     
 }

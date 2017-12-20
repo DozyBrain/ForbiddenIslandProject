@@ -7,19 +7,10 @@ import model.game.State;
 import model.game.Tile;
 
 public class Diver extends Adventurer {
-
-    /**
-     * @return the roleName
-     */
-    public String getRoleName() {
-        return roleName;
-    }
-
-    private final String roleName = "DIVER";
     
     public Diver(Tile currentTile) {
         super(currentTile);
-        
+        setRoleName("DIVER");
     }
     
         
