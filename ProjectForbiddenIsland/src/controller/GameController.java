@@ -1,8 +1,6 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import model.adventurers.Adventurer;
+import java.util.HashMap;
 import view.*;
 import model.game.*;
 import model.player.Player;
@@ -10,7 +8,7 @@ import model.player.Player;
 
 public class GameController {
     
-    	ArrayList<Player> player;
+    	HashMap<String,Player> players;
 	ViewAdventurer ViewAdventurer;
 	View View;
 	Grid grid;
@@ -29,8 +27,12 @@ public class GameController {
 //          ArrayList<Tile> tileList = a.getReachableTiles(grid.getTiles());
         
         public void gameTurn(Player currentPlayer){
-                
+//            case () {
+//            
+//            } 
             
         }
+        
+        
         
 }
