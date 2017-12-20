@@ -36,16 +36,16 @@ public abstract class Adventurer {
 
             ArrayList<Tile> enableTiles = new ArrayList<>();
 
-            if (tiles.containsKey(south) || tiles.get(south).getCurrentState() != State.gone) {
+            if (tiles.containsKey(south) || tiles.get(south).getCurrentState() != State.GONE) {
                 enableTiles.add(tiles.get(south));
             } 
-            else if (tiles.containsKey(north) || tiles.get(north).getCurrentState() != State.gone) {
+            else if (tiles.containsKey(north) || tiles.get(north).getCurrentState() != State.GONE) {
                 enableTiles.add(tiles.get(north));
             } 
-            else if (tiles.containsKey(east) || tiles.get(east).getCurrentState() != State.gone) {
+            else if (tiles.containsKey(east) || tiles.get(east).getCurrentState() != State.GONE) {
                 enableTiles.add(tiles.get(east));
             } 
-            else if (tiles.containsKey(west) || tiles.get(west).getCurrentState() != State.gone) {
+            else if (tiles.containsKey(west) || tiles.get(west).getCurrentState() != State.GONE) {
                 enableTiles.add(tiles.get(west));
             }
 
@@ -60,19 +60,19 @@ public abstract class Adventurer {
             
             ArrayList<Tile> drieableTiles = new ArrayList<>();
             
-            if (tiles.containsKey(coords) || tiles.get(coords).getCurrentState() != State.flooded) {
+            if (tiles.containsKey(coords) || tiles.get(coords).getCurrentState() != State.FLOODED) {
                 drieableTiles.add(tiles.get(coords));
             } 
-            else if (tiles.containsKey(south) || tiles.get(south).getCurrentState() != State.flooded) {
+            else if (tiles.containsKey(south) || tiles.get(south).getCurrentState() != State.FLOODED) {
                 drieableTiles.add(tiles.get(south));
             } 
-            else if (tiles.containsKey(north) || tiles.get(north).getCurrentState() != State.flooded) {
+            else if (tiles.containsKey(north) || tiles.get(north).getCurrentState() != State.FLOODED) {
                 drieableTiles.add(tiles.get(north));
             } 
-            else if (tiles.containsKey(east) || tiles.get(east).getCurrentState() != State.flooded) {
+            else if (tiles.containsKey(east) || tiles.get(east).getCurrentState() != State.FLOODED) {
                 drieableTiles.add(tiles.get(east));
             } 
-            else if (tiles.containsKey(west) || tiles.get(west).getCurrentState() != State.flooded) {
+            else if (tiles.containsKey(west) || tiles.get(west).getCurrentState() != State.FLOODED) {
                 drieableTiles.add(tiles.get(west));
             }
             

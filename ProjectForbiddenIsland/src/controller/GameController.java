@@ -1,12 +1,16 @@
 package controller;
 
 import java.util.HashMap;
+import java.util.Observable;
+import java.util.Observer;
 import view.*;
 import model.game.*;
 import model.player.Player;
+import util.message.InGameAction;
+import util.message.InGameMessage;
 
 
-public class GameController {
+public class GameController implements Observer {
     
     	HashMap<String,Player> players;
 	ViewAdventurer ViewAdventurer;
@@ -32,6 +36,42 @@ public class GameController {
 //            } 
             
         }
+
+    @Override
+    public void update(Observable arg0, Object arg1) {
+        if (arg1 instanceof InGameMessage) {
+            InGameMessage m = (InGameMessage) arg1;
+            
+            switch ((InGameAction) m.getType()) {
+            case SELECT_TILE:
+                doAction(m.getContent());
+                break;
+            case MOVE:
+                setMoveAction();
+                
+                break;
+            case GET_TREASURE:
+                
+                break;
+            case GIVE_CARD:
+                
+                break;
+            case DRY:
+                dry();
+                break;
+            case USE_CAPACITY:
+                setCapacityActionT();
+                break;
+            case USE_CARD:         
+                
+                break;
+            case END_TURN:
+                endTurn();
+                break;
+            
+            default:
+                break;
+}
         
         
         
