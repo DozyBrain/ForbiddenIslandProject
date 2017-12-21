@@ -18,95 +18,13 @@ public abstract class Adventurer {
     private String roleName = "";
     private Pawn pawn = new Pawn("");
     
-    // Cardinal Positions
- 
-    Coords tile;
-    Coords south;
-    Coords north;
-    Coords east;
-    Coords west ;
-    
         protected Adventurer(Tile currentTile) {
             this.setCurrentTile(currentTile);
-            this.setNumberActionEnable(numberActionMax);
-            // Cardinal Positions
-//            tile = getCurrentTile().getCoords();
-//            south = new Coords(tile.getX(), tile.getY()-1);
-//            north = new Coords(tile.getX(), tile.getY()+1);
-//            east = new Coords(tile.getX()+1, tile.getY());
-//            west = new Coords(tile.getX()-1, tile.getY());
-
-   // protected Coords coords;
-   // protected Coords south;
-  //  protected Coords north;
-  //  protected Coords east;
-  //  protected Coords west;
-    
-  //      protected Adventurer(Tile currentTile) {
-  //          setCurrentTile(currentTile);
-  //          setNumberActionEnable(numberActionMax);
-   //         
- //           // P O S I T I O N   V A L U E S   S E T //
- //           coords = getCurrentTile().getCoords();
-  //          south = new Coords(coords.getX(), coords.getY()-1);
-  //          north = new Coords(coords.getX(), coords.getY()+1);
- //           east = new Coords(coords.getX()+1, coords.getY());
-//            west = new Coords(coords.getX()-1, coords.getY());
-//>>>>>>> master
+            this.setNumberActionEnable(numberActionMax);    
         }
 
 	public void decreaseActions() {
             setNumberActionEnable(getNumberActionEnable() - 1);
-	}
-
-	/**
-	 * 
-	 * @param coords
-	 */
-	public ArrayList<Tile> getReachableTiles(HashMap<Coords, Tile> tiles) {
-
-            ArrayList<Tile> enableTiles = new ArrayList<>();
-
-            if (tiles.containsKey(south) || tiles.get(south).getCurrentState() != State.GONE) {
-                enableTiles.add(tiles.get(south));
-            } 
-            else if (tiles.containsKey(north) || tiles.get(north).getCurrentState() != State.GONE) {
-                enableTiles.add(tiles.get(north));
-            } 
-            else if (tiles.containsKey(east) || tiles.get(east).getCurrentState() != State.GONE) {
-                enableTiles.add(tiles.get(east));
-            } 
-            else if (tiles.containsKey(west) || tiles.get(west).getCurrentState() != State.GONE) {
-                enableTiles.add(tiles.get(west));
-            }
-
-            return enableTiles;
-	}
-
-	public int getNbAction() {
-            return this.getNumberActionEnable();
-	}
-
-	public void getDryableTiles(HashMap<Coords, Tile> tiles) {
-            
-            ArrayList<Tile> drieableTiles = new ArrayList<>();
-
-            if (tiles.containsKey(coords) || tiles.get(coords).getCurrentState() != State.FLOODED) {
-                drieableTiles.add(tiles.get(coords));
-            } 
-            else if (tiles.containsKey(south) || tiles.get(south).getCurrentState() != State.FLOODED) {
-                drieableTiles.add(tiles.get(south));
-            } 
-            else if (tiles.containsKey(north) || tiles.get(north).getCurrentState() != State.FLOODED) {
-                drieableTiles.add(tiles.get(north));
-            } 
-            else if (tiles.containsKey(east) || tiles.get(east).getCurrentState() != State.FLOODED) {
-                drieableTiles.add(tiles.get(east));
-            } 
-            else if (tiles.containsKey(west) || tiles.get(west).getCurrentState() != State.FLOODED) {
-                drieableTiles.add(tiles.get(west));
-            }
-            
 	}
 
 	public Coords getCoords() {
@@ -168,18 +86,30 @@ public abstract class Adventurer {
         this.getPawn().setColor(color);
     }
 
-    public ArrayList<Tile> enableMove(Grid grille) {
+    public ArrayList<Tile> enableMove(Grid grid) {
         
-        ArrayList<Tile> tuilesPossibles = new ArrayList<>();
-        ArrayList<Tile> tuilesAdj = new ArrayList<>();
-        tuilesAdj = grille.getAdjTile(this.getCurrentTile());
-        
-        for (Tile t : tuilesAdj) {
-            if (t.getCurrentState() == State.DRIED ||t.getCurrentState() == State.FLOODED ) {
-                tuilesPossibles.add(t);
+        ArrayList<Tile> possibleTiles = new ArrayList<>();
+        ArrayList<Tile> adjTiles = new ArrayList<>();
+        adjTiles = grid.getAdjTiles(this.getCurrentTile());   
+        for (Tile t : adjTiles) {
+            if (t.getCurrentState() != State.GONE) {
+                possibleTiles.add(t);
             }
         }
-        return tuilesPossibles;
+        return possibleTiles;
+    }
+    
+    public ArrayList<Tile> enableDry(Grid grid) {
+        
+        ArrayList<Tile> possibleTiles = new ArrayList<>();
+        ArrayList<Tile> adjTiles = new ArrayList<>();
+        adjTiles = grid.getAdjTiles(this.getCurrentTile());   
+        for (Tile t : adjTiles) {
+            if (t.getCurrentState() == State.FLOODED) {
+                possibleTiles.add(t);
+            }
+        }
+        return possibleTiles;
     }
     
     
