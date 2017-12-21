@@ -4,7 +4,12 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import model.game.*;
+ 
+import static model.game.State.dried;
+import static model.game.State.flooded;
+
 import model.player.Pawn;
+ 
 
 
 public abstract class Adventurer {
@@ -16,22 +21,40 @@ public abstract class Adventurer {
     private Pawn pawn = new Pawn("");
     
     // Cardinal Positions
-    protected Coords coords;
-    protected Coords south;
-    protected Coords north;
-    protected Coords east;
-    protected Coords west;
+ 
+    Coords tile;
+    Coords south;
+    Coords north;
+    Coords east;
+    Coords west ;
     
         protected Adventurer(Tile currentTile) {
-            setCurrentTile(currentTile);
-            setNumberActionEnable(numberActionMax);
-            
-            // P O S I T I O N   V A L U E S   S E T //
-            coords = getCurrentTile().getCoords();
-            south = new Coords(coords.getX(), coords.getY()-1);
-            north = new Coords(coords.getX(), coords.getY()+1);
-            east = new Coords(coords.getX()+1, coords.getY());
-            west = new Coords(coords.getX()-1, coords.getY());
+            this.setCurrentTile(currentTile);
+            this.setNumberActionEnable(numberActionMax);
+            // Cardinal Positions
+//            tile = getCurrentTile().getCoords();
+//            south = new Coords(tile.getX(), tile.getY()-1);
+//            north = new Coords(tile.getX(), tile.getY()+1);
+//            east = new Coords(tile.getX()+1, tile.getY());
+//            west = new Coords(tile.getX()-1, tile.getY());
+
+   // protected Coords coords;
+   // protected Coords south;
+  //  protected Coords north;
+  //  protected Coords east;
+  //  protected Coords west;
+    
+  //      protected Adventurer(Tile currentTile) {
+  //          setCurrentTile(currentTile);
+  //          setNumberActionEnable(numberActionMax);
+   //         
+ //           // P O S I T I O N   V A L U E S   S E T //
+ //           coords = getCurrentTile().getCoords();
+  //          south = new Coords(coords.getX(), coords.getY()-1);
+  //          north = new Coords(coords.getX(), coords.getY()+1);
+ //           east = new Coords(coords.getX()+1, coords.getY());
+//            west = new Coords(coords.getX()-1, coords.getY());
+//>>>>>>> master
         }
 
 	public void decreaseActions() {
@@ -69,7 +92,7 @@ public abstract class Adventurer {
 	public void getDryableTiles(HashMap<Coords, Tile> tiles) {
             
             ArrayList<Tile> drieableTiles = new ArrayList<>();
-            
+
             if (tiles.containsKey(coords) || tiles.get(coords).getCurrentState() != State.FLOODED) {
                 drieableTiles.add(tiles.get(coords));
             } 
@@ -147,4 +170,20 @@ public abstract class Adventurer {
         this.getPawn().setColor(color);
     }
 
+    public ArrayList<Tile> enableMove(Grid grille) {
+        
+        ArrayList<Tile> tuilesPossibles = new ArrayList<>();
+        ArrayList<Tile> tuilesAdj = new ArrayList<>();
+        tuilesAdj = grille.getAdjTile(this.getCurrentTile());
+        
+        for (Tile t : tuilesAdj) {
+            if (t.getCurrentState() == dried ||t.getCurrentState() == flooded ) {
+                tuilesPossibles.add(t);
+            }
+        }
+        return tuilesPossibles;
+    }
+    
+    
+    
 }

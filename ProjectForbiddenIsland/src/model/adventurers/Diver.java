@@ -4,7 +4,9 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import model.game.Coords;
+import model.game.Grid;
 import model.game.State;
+import static model.game.State.*;
 import model.game.Tile;
 import model.player.Pawn;
 
@@ -16,33 +18,33 @@ public class Diver extends Adventurer {
         setColor(Color.BLACK);
     }
     
-        
     @Override
-    public ArrayList<Tile> getReachableTiles(HashMap<Coords, Tile> tiles) {
+     public ArrayList<Tile> enableMove(Grid grille) {
+        
+        Tile tuileL;
+        ArrayList<Tile> tuilesPossibles = super.enableMove(grille);
+        
+        ArrayList<Tile> tuilesTrav = new ArrayList();
+        tuilesTrav.add(getCurrentTile());
+        
+        for (int i = 0; i < tuilesTrav.size(); i++) {
+            tuileL = tuilesTrav.get(i);
             
-        // A modifier
-//                Coords coords = getCurrentTile().getCoords();
-//                Coords south = new Coords(coords.getX(), coords.getY()+1);
-//                Coords north = new Coords(coords.getX(), coords.getY()-1);
-//                Coords east = new Coords(coords.getX()+1, coords.getY());
-//                Coords west = new Coords(coords.getX()-1, coords.getY());
-//
-                ArrayList<Tile> enableTiles = new ArrayList<>();
-//
-//                if (tiles.containsKey(south) || tiles.get(south).getCurrentState() != State.gone) {
-//                    enableTiles.add(tiles.get(south));
-//                } 
-//                else if (tiles.containsKey(north) || tiles.get(north).getCurrentState() != State.gone) {
-//                    enableTiles.add(tiles.get(north));
-//                } 
-//                else if (tiles.containsKey(east) || tiles.get(east).getCurrentState() != State.gone) {
-//                    enableTiles.add(tiles.get(east));
-//                } 
-//                else if (tiles.containsKey(west) || tiles.get(west).getCurrentState() != State.gone) {
-//                    enableTiles.add(tiles.get(west));
-//                }
 
-                return enableTiles;
+            for (Tile tuile : grille.getAdjTile(tuileL)) {
+                
+                if (tuile.getCurrentState()!= gone && !tuilesPossibles.contains(tuile))
+                    tuilesPossibles.add(tuile);
+                    tuile.show();
+                
+                if (tuile.getCurrentState() != dried && !tuilesTrav.contains(tuile))
+                    tuilesTrav.add(tuile);
+            }
+        }
+        
+        tuilesPossibles.remove(getCurrentTile());
+        return tuilesPossibles;
     }
-    
 }
+
+    
