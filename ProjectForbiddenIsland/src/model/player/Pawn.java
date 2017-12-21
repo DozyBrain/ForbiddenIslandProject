@@ -9,20 +9,7 @@ public class Pawn {
         
     public Pawn(String colorName){
         setColorName(colorName);
-        switch (colorName) {
-            case ("RED"): 
-                setColor(Color.RED);
-            case ("GREEN"): 
-                setColor(Color.GREEN);
-            case ("YELLOW"): 
-                setColor(Color.YELLOW);
-            case ("BLUE"): 
-                setColor(Color.BLUE);
-            case ("BLACK"): 
-                setColor(Color.BLACK);
-            case ("WHITE"): 
-                 setColor(Color.WHITE);  
-        }         
+        setColor(Color.PINK);
     }
 
     public void setColor(Color color) {

@@ -1,5 +1,6 @@
 package model.adventurers;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import model.game.Coords;
@@ -12,7 +13,7 @@ public class Diver extends Adventurer {
     public Diver(Tile currentTile) {
         super(currentTile);
         setRoleName("DIVER");
-        setPawn(new Pawn("BLACK"));
+        setColor(Color.BLACK);
     }
     
         

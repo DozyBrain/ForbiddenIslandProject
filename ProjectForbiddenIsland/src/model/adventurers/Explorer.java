@@ -1,5 +1,6 @@
 package model.adventurers;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import model.game.Coords;
@@ -18,7 +19,7 @@ public class Explorer extends Adventurer {
     public Explorer(Tile currentTile) {
         super(currentTile);
         setRoleName("EXPLORER");
-        setPawn(new Pawn("GREEN"));
+        setColor(Color.GREEN);
         
         topLeft = new Coords(coords.getX()-1, coords.getY()-1);
         topRight = new Coords(coords.getX()+1, coords.getY()-1);

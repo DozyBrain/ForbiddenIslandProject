@@ -1,5 +1,6 @@
 package model.adventurers;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import model.game.*;
@@ -140,6 +141,10 @@ public abstract class Adventurer {
     
     public void setPawn(Pawn pawn) {
         this.pawn = pawn;
+    }
+    
+    public void setColor(Color color) {
+        this.getPawn().setColor(color);
     }
 
 }
