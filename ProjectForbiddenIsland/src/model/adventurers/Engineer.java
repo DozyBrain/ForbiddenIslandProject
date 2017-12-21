@@ -1,6 +1,8 @@
 package model.adventurers;
 
+import java.awt.Color;
 import model.game.Tile;
+import model.player.Pawn;
 
 public class Engineer extends Adventurer {
     
@@ -8,7 +10,9 @@ public class Engineer extends Adventurer {
 
     public Engineer(Tile currentTile) {
         super(currentTile);
-    }
+        setRoleName("ENGINEER");
+        setColor(Color.RED);
+    } 
 
     public void setHasDry(boolean hasDry) {
         this.hasDry = hasDry;
@@ -17,4 +21,5 @@ public class Engineer extends Adventurer {
     public boolean getHasDry() {
             return this.hasDry;
     }
+    
 }

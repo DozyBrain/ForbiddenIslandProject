@@ -22,6 +22,7 @@ public class Grid {
         }
         
         public void initGrid(){
+
 //                int t =0;
 //                int x =0;
 //                int y =0;
@@ -44,6 +45,7 @@ public class Grid {
 //                }
 //            }
        }
+
         
     
         public void initSpe(){
@@ -61,6 +63,7 @@ public class Grid {
 //            tiles.put( new Coords(5,5),null);
 //            
             //ligne 0
+ 
             tiles.add(new Tile( new Coords(0,2),dried,BREAKERS_BRIDGE));
             tiles.add(new Tile( new Coords(0,3),flooded,BRONZE_GATE));
             
@@ -95,6 +98,7 @@ public class Grid {
             //ligne 5
             tiles.add( new Tile( new Coords(5,2),dried,WATCHTOWER));
             tiles.add( new Tile( new Coords(5,3),flooded,WHISPERING_GARDEN));
+
             
             
         }

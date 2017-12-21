@@ -1,5 +1,6 @@
 package model.adventurers;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import model.game.Coords;
@@ -7,12 +8,14 @@ import model.game.Grid;
 import model.game.State;
 import static model.game.State.*;
 import model.game.Tile;
+import model.player.Pawn;
 
 public class Diver extends Adventurer {
-
+    
     public Diver(Tile currentTile) {
         super(currentTile);
-        
+        setRoleName("DIVER");
+        setColor(Color.BLACK);
     }
     
     @Override
@@ -27,6 +30,7 @@ public class Diver extends Adventurer {
         for (int i = 0; i < tuilesTrav.size(); i++) {
             tuileL = tuilesTrav.get(i);
             
+
             for (Tile tuile : grille.getAdjTile(tuileL)) {
                 
                 if (tuile.getCurrentState()!= gone && !tuilesPossibles.contains(tuile))
@@ -42,4 +46,5 @@ public class Diver extends Adventurer {
         return tuilesPossibles;
     }
 }
+
     

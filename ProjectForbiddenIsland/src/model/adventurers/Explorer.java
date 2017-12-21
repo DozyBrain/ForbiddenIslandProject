@@ -1,5 +1,6 @@
 package model.adventurers;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import model.game.Coords;
@@ -7,16 +8,24 @@ import model.game.Grid;
 import model.game.State;
 import static model.game.State.gone;
 import model.game.Tile;
+import model.player.Pawn;
 
 public class Explorer extends Adventurer {
 
         // diagonal positions
-
     
     public Explorer(Tile currentTile) {
         super(currentTile);
+        setRoleName("EXPLORER");
+        setColor(Color.GREEN);
+        
+        topLeft = new Coords(coords.getX()-1, coords.getY()-1);
+        topRight = new Coords(coords.getX()+1, coords.getY()-1);
+        botLeft = new Coords(coords.getX()-1, coords.getY()+1);
+        botRight = new Coords(coords.getX()+1, coords.getY()+1);
     }
     
+
 //    @Override
 //    public ArrayList<Tile> getReachableTiles(HashMap<Coords, Tile> tiles) {
 //
@@ -46,6 +55,7 @@ public class Explorer extends Adventurer {
 //        else if (tiles.containsKey(botRight) || tiles.get(botRight).getCurrentState() != State.gone) {
 //            enableTiles.add(tiles.get(botRight));
 //        }
+
 
 //        return enableTiles;
 //    }
@@ -81,6 +91,7 @@ public class Explorer extends Adventurer {
 //    }
     
     @Override
+ 
      public ArrayList<Tile> enableMove(Grid grille) {
         ArrayList<Tile> tuilesAdj = super.enableMove(grille);
         ArrayList<Tile> tuilesDiag = new ArrayList<>();
@@ -89,6 +100,7 @@ public class Explorer extends Adventurer {
         for (Tile t : tuilesDiag) {
             if (t.getCurrentState()!= gone)
                 tuilesAdj.add(t);
+
         }
         return tuilesAdj;
     }
