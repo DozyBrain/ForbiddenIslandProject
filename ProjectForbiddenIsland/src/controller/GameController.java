@@ -15,14 +15,14 @@ import util.message.InGameMessage;
 
 public class GameController implements Observer {
     
-    	private HashMap<String,Player> players;
+    private HashMap<String,Player> players;
 
-        private Tile diverDefaultTile;
-        private Tile engineerDefaultTile;
-        private Tile explorerDefaultTile;
-        private Tile messengerDefaultTile;
-        private Tile navigatorDefaultTile;
-        private Tile pilotDefaultTile;
+//        private Tile diverDefaultTile;
+//        private Tile engineerDefaultTile;
+//        private Tile explorerDefaultTile;
+//        private Tile messengerDefaultTile;
+//        private Tile navigatorDefaultTile;
+//        private Tile pilotDefaultTile;
         
 	Grid grid;
         
@@ -31,12 +31,12 @@ public class GameController implements Observer {
             setGrid(grid);
             start();
             
-            diverDefaultTile = grid.getTiles().get(new Coords(2,1));
-            engineerDefaultTile = grid.getTiles().get(new Coords(3,0));
-            explorerDefaultTile = grid.getTiles().get(new Coords(4,2));
-            messengerDefaultTile = grid.getTiles().get(new Coords(1,2));
-            navigatorDefaultTile = grid.getTiles().get(new Coords(3,1));
-            pilotDefaultTile = grid.getTiles().get(new Coords(3,2));
+//            diverDefaultTile = grid.getTiles().get(new Coords(2,1));
+//            engineerDefaultTile = grid.getTiles().get(new Coords(3,0));
+//            explorerDefaultTile = grid.getTiles().get(new Coords(4,2));
+//            messengerDefaultTile = grid.getTiles().get(new Coords(1,2));
+//            navigatorDefaultTile = grid.getTiles().get(new Coords(3,1));
+//            pilotDefaultTile = grid.getTiles().get(new Coords(3,2));
             
         }
         
