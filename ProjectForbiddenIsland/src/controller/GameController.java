@@ -89,7 +89,7 @@ public class GameController implements Observer {
                     }
 
 
-                    while (ok = false) {
+                    while (ok == false) {
                         System.out.print("\trole input error :");
                         roleName = scan.nextLine();
                         roleName = roleName.toLowerCase();
