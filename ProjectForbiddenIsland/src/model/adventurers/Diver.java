@@ -31,6 +31,7 @@ public class Diver extends Adventurer {
                 
                 if (tuile.getCurrentState()!= gone && !tuilesPossibles.contains(tuile))
                     tuilesPossibles.add(tuile);
+                    tuile.show();
                 
                 if (tuile.getCurrentState() != dried && !tuilesTrav.contains(tuile))
                     tuilesTrav.add(tuile);

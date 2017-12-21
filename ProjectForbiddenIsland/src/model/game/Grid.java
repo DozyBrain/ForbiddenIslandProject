@@ -184,9 +184,10 @@ public class Grid {
             }       
 
 
-            for(Tile t: Liste){
-            t.show();
-        }
+//            for(Tile t: Liste){
+//                t.show();
+//            }
+            
             System.out.println();
             System.out.println();
             System.out.println();
