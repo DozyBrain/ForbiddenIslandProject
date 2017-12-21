@@ -5,7 +5,12 @@
  */
 package test_dawa;
 
+import java.util.ArrayList;
+import model.adventurers.Adventurer;
+import model.adventurers.Diver;
 import model.game.*;
+import model.game.TileName.*;
+import static model.game.TileName.IRON_GATE;
 
 /**
  *
@@ -20,7 +25,26 @@ public class Newmain {
         // TODO code application logic here
         Grid grille = new Grid();
         grille.initSpe();
-        grille.show();
+        Diver diver =null;
+        ArrayList<Tile> name = new ArrayList(grille.getTiles());
+         for(int i = 0; i<name.size();i++){
+            if(name.get(i).getName() == IRON_GATE){
+                System.out.println("dievr init");
+                diver = new Diver(name.get(i));
+            }
+        }
+        
+        
+        
+        ArrayList<Tile> tileDive = new ArrayList(diver.enableMove(grille));
+        
+        System.out.println("");
+        System.out.println("AFFICHE GRILLE");
+        System.out.println("");
+        
+        for(int i = 0; i< tileDive.size(); i++){
+            tileDive.get(i).show();
+        }
            
     }
     
