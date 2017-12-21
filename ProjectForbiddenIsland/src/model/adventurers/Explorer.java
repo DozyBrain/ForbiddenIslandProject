@@ -6,7 +6,7 @@ import java.util.HashMap;
 import model.game.Coords;
 import model.game.Grid;
 import model.game.State;
-import static model.game.State.gone;
+
 import model.game.Tile;
 import model.player.Pawn;
 
@@ -19,11 +19,11 @@ public class Explorer extends Adventurer {
         setRoleName("EXPLORER");
         setColor(Color.GREEN);
         
-        topLeft = new Coords(coords.getX()-1, coords.getY()-1);
-        topRight = new Coords(coords.getX()+1, coords.getY()-1);
-        botLeft = new Coords(coords.getX()-1, coords.getY()+1);
-        botRight = new Coords(coords.getX()+1, coords.getY()+1);
-    }
+//        topLeft = new Coords(coords.getX()-1, coords.getY()-1);
+//        topRight = new Coords(coords.getX()+1, coords.getY()-1);
+//        botLeft = new Coords(coords.getX()-1, coords.getY()+1);
+//        botRight = new Coords(coords.getX()+1, coords.getY()+1);
+//    }
     
 
 //    @Override
@@ -90,8 +90,7 @@ public class Explorer extends Adventurer {
 //        }
 //    }
     
-    @Override
- 
+    @Override 
      public ArrayList<Tile> enableMove(Grid grille) {
         ArrayList<Tile> tuilesAdj = super.enableMove(grille);
         ArrayList<Tile> tuilesDiag = new ArrayList<>();

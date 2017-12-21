@@ -33,11 +33,11 @@ public class Diver extends Adventurer {
 
             for (Tile tuile : grille.getAdjTile(tuileL)) {
                 
-                if (tuile.getCurrentState()!= gone && !tuilesPossibles.contains(tuile))
+                if (tuile.getCurrentState()!= State.GONE && !tuilesPossibles.contains(tuile))
                     tuilesPossibles.add(tuile);
                     tuile.show();
                 
-                if (tuile.getCurrentState() != dried && !tuilesTrav.contains(tuile))
+                if (tuile.getCurrentState() != State.DRIED && !tuilesTrav.contains(tuile))
                     tuilesTrav.add(tuile);
             }
         }

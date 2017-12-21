@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import model.game.*;
  
-import static model.game.State.dried;
-import static model.game.State.flooded;
 
 import model.player.Pawn;
  
@@ -177,7 +175,7 @@ public abstract class Adventurer {
         tuilesAdj = grille.getAdjTile(this.getCurrentTile());
         
         for (Tile t : tuilesAdj) {
-            if (t.getCurrentState() == dried ||t.getCurrentState() == flooded ) {
+            if (t.getCurrentState() == State.DRIED ||t.getCurrentState() == State.FLOODED ) {
                 tuilesPossibles.add(t);
             }
         }
