@@ -39,10 +39,10 @@ public class PIERRE {
             GameController gameController = new GameController(grid);
             
             Tile tile = new Tile(new Coords(0, 0), State.DRIED, TileName.IRON_GATE);
-            gameController.addPlayer(new Player(new Engineer(tile), "joueur1", new Pawn("RED")));
-            gameController.addPlayer(new Player(new Explorer(tile), "joueur2", new Pawn("GREEN")));
-            gameController.addPlayer(new Player(new Messenger(tile), "joueur3", new Pawn("WHITE")));
-            gameController.addPlayer(new Player(new Navigator(tile), "joueur4", new Pawn("YELLOW")));
+            gameController.addPlayer(new Player(new Engineer(tile), "joueur1"));
+            gameController.addPlayer(new Player(new Explorer(tile), "joueur2"));
+            gameController.addPlayer(new Player(new Messenger(tile), "joueur3"));
+            gameController.addPlayer(new Player(new Navigator(tile), "joueur4"));
             
             for (Map.Entry<String,Player> e : gameController.getPlayers().entrySet()){
                 Player currentPlayer = e.getValue();
