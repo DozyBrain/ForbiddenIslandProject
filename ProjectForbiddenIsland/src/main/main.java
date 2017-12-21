@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.Map;
 import model.adventurers.*;
 import model.game.Coords;
+import model.game.Grid;
 import model.game.State;
 import model.game.Tile;
 import model.game.TileName;
@@ -29,7 +30,12 @@ public class main {
     public static void main(String[] args) throws IOException, InterruptedException {
         // TODO code application logic here
             
-
+        Grid grid = new Grid();
+        grid.initGrid();
+        grid.initSpe();
+        
+        GameController game = new GameController(grid);
+        game.start();
 
     }
     
