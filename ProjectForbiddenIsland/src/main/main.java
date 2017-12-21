@@ -31,7 +31,6 @@ public class main {
         // TODO code application logic here
             
         Grid grid = new Grid();
-        grid.initGrid();
         grid.initSpe();
         
         GameController game = new GameController(grid);

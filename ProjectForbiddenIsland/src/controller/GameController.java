@@ -49,12 +49,14 @@ public class GameController implements Observer {
         }
         
         public void showTitle() {
+            
             System.out.println("***************************************************");
             System.out.println("*                                                 *");
             System.out.println("*     P R O J E T   I L E   I N T E R D I T E     *");
             System.out.println("*                                                 *");
             System.out.println("***************************************************");
             System.out.println("");
+            
         }
 
         public void registerPlayers() {
@@ -70,7 +72,7 @@ public class GameController implements Observer {
             
             while ( i < 4 && quit != true) {
                 // Registration Player 1
-                System.out.print("Player 1 " + "\n\tpseudo :");
+                System.out.print("Player " + (i+1) + "\n\tpseudo :");
                 String p1name = scan.nextLine();
                 if (p1name != "") {
                     System.out.print("\trole :");
