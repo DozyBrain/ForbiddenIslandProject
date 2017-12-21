@@ -5,7 +5,6 @@
  */
 package main;
 
-import Vue.IHM;
 import controller.GameController;
 import java.awt.Color;
 import java.io.IOException;
@@ -30,7 +29,7 @@ public class main {
     public static void main(String[] args) throws IOException, InterruptedException {
         // TODO code application logic here
             
-            IHM ihm = new IHM();
+
 
     }
     

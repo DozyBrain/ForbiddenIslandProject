@@ -14,6 +14,7 @@ import util.message.InGameMessage;
 public class GameController implements Observer {
     
     	private HashMap<String,Player> players;
+
 //	ViewAdventurer ViewAdventurer;
 //	View View;
 	Grid grid;
@@ -21,6 +22,10 @@ public class GameController implements Observer {
         public GameController (Grid grid) {
             players = new HashMap<>();
             setGrid(grid);
+            start();
+        }
+        
+        public void start(){              
         }
 
         public void move(Tile tile, Player currentPlayer) {
