@@ -3,6 +3,8 @@ package model.adventurers;
 import java.util.ArrayList;
 import java.util.HashMap;
 import model.game.*;
+import static model.game.State.dried;
+import static model.game.State.flooded;
 
 
 public abstract class Adventurer {
@@ -13,15 +15,21 @@ public abstract class Adventurer {
     private int numberActionMax = 3;
     
     // Cardinal Positions
-    Coords tile = getCurrentTile().getCoords();
-    Coords south = new Coords(tile.getX(), tile.getY()-1);
-    Coords north = new Coords(tile.getX(), tile.getY()+1);
-    Coords east = new Coords(tile.getX()+1, tile.getY());
-    Coords west = new Coords(tile.getX()-1, tile.getY());
+    Coords tile;
+    Coords south;
+    Coords north;
+    Coords east;
+    Coords west ;
     
         protected Adventurer(Tile currentTile) {
-            setCurrentTile(currentTile);
-            setNumberActionEnable(numberActionMax);
+            this.setCurrentTile(currentTile);
+            this.setNumberActionEnable(numberActionMax);
+            // Cardinal Positions
+//            tile = getCurrentTile().getCoords();
+//            south = new Coords(tile.getX(), tile.getY()-1);
+//            north = new Coords(tile.getX(), tile.getY()+1);
+//            east = new Coords(tile.getX()+1, tile.getY());
+//            west = new Coords(tile.getX()-1, tile.getY());
         }
 
 	public void decreaseActions() {
@@ -117,4 +125,20 @@ public abstract class Adventurer {
         this.currentTile = currentTile;
     }
 
+    public ArrayList<Tile> enableMove(Grid grille) {
+        
+        ArrayList<Tile> tuilesPossibles = new ArrayList<>();
+        ArrayList<Tile> tuilesAdj = new ArrayList<>();
+        tuilesAdj = grille.getAdjTile(this.getCurrentTile());
+        
+        for (Tile t : tuilesAdj) {
+            if (t.getCurrentState() == dried ||t.getCurrentState() == flooded ) {
+                tuilesPossibles.add(t);
+            }
+        }
+        return tuilesPossibles;
+    }
+    
+    
+    
 }

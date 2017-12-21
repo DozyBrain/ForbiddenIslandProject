@@ -3,7 +3,9 @@ package model.adventurers;
 import java.util.ArrayList;
 import java.util.HashMap;
 import model.game.Coords;
+import model.game.Grid;
 import model.game.State;
+import static model.game.State.gone;
 import model.game.Tile;
 
 public class Explorer extends Adventurer {
@@ -81,6 +83,18 @@ public class Explorer extends Adventurer {
         }
     }
     
+    @Override
+     public ArrayList<Tile> enableMove(Grid grille) {
+        ArrayList<Tile> tuilesAdj = super.enableMove(grille);
+        ArrayList<Tile> tuilesDiag = new ArrayList<>();
+        tuilesDiag = grille.getDiagTile(getCurrentTile());
+        
+        for (Tile t : tuilesDiag) {
+            if (t.getCurrentState()!= gone)
+                tuilesAdj.add(t);
+        }
+        return tuilesAdj;
+    }
     
     
 }

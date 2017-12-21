@@ -31,6 +31,12 @@ public enum TileName {
     private TileName(String name) {
         this.name = name;
     }
+
+    public String getName() {
+        return name;
+    }
+    
+    
     
 
     public static TileName getTileName(int t){
