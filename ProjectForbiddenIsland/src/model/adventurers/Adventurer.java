@@ -14,7 +14,7 @@ public abstract class Adventurer {
 
     private Tile currentTile;
     private int numberActionEnable;
-    private int numberActionMax = 3;
+    private final int numberActionMax = 3;
     private String roleName = "";
     private Pawn pawn = new Pawn("");
     
@@ -90,9 +90,10 @@ public abstract class Adventurer {
         
         ArrayList<Tile> possibleTiles = new ArrayList<>();
         ArrayList<Tile> adjTiles = new ArrayList<>();
-        adjTiles = grid.getAdjTiles(this.getCurrentTile());   
+        adjTiles = grid.getAdjTiles(this.getCurrentTile());  
+        
         for (Tile t : adjTiles) {
-            if (t.getCurrentState() != State.GONE) {
+            if (t.getCurrentState() != State.GONE && !possibleTiles.contains(t)) {
                 possibleTiles.add(t);
             }
         }
@@ -105,7 +106,7 @@ public abstract class Adventurer {
         ArrayList<Tile> adjTiles = new ArrayList<>();
         adjTiles = grid.getAdjTiles(this.getCurrentTile());   
         for (Tile t : adjTiles) {
-            if (t.getCurrentState() == State.FLOODED) {
+            if (t.getCurrentState() == State.FLOODED && !possibleTiles.contains(t)) {
                 possibleTiles.add(t);
             }
         }

@@ -9,6 +9,7 @@ import java.util.Scanner;
 import model.adventurers.*;
 import view.*;
 import model.game.*;
+import static model.game.TileName.*;
 import model.player.Player;
 import util.message.InGameAction;
 import util.message.InGameMessage;
@@ -16,7 +17,7 @@ import util.message.InGameMessage;
 
 public class GameController implements Observer {
     
-    private HashMap<String,Player> players;
+    private ArrayList<Player> players;
 
         private final Tile diverDefaultTile;
         private final Tile engineerDefaultTile;
@@ -24,6 +25,13 @@ public class GameController implements Observer {
         private final Tile messengerDefaultTile;
         private final Tile navigatorDefaultTile;
         private final Tile pilotDefaultTile;
+        
+        private Diver divers =null;
+        private Engineer engineers = null;
+        private Explorer explorers = null;
+        private Messenger messengers = null;
+        private Navigator navigators = null;
+        private Pilot pilots = null;
         
         // Differents adventurers label
         String diver = "diver";
@@ -36,25 +44,46 @@ public class GameController implements Observer {
         String move = "move";
         String dry = "dry";
         String pass = "pass";
-        
+                
         
 	Grid grid;
         
         public GameController (Grid grid) {
-            players = new HashMap<>();
+            players = new ArrayList<>();
             setGrid(grid);
             grid.initSpe();
+            
+            
+
+
+            ArrayList<Tile> name = new ArrayList(grid.getTiles());
+             for(int i = 0; i<name.size();i++){
+                if(name.get(i).getName() == IRON_GATE){
+                    divers = new Diver(name.get(i));
+                }else if(name.get(i).getName() == COPPER_GATE){
+                    explorers = new Explorer(name.get(i));
+                }else if(name.get(i).getName() == SILVER_GATE){
+                    navigators = new Navigator(name.get(i));
+                }else if(name.get(i).getName() == BRONZE_GATE){
+                    engineers = new Engineer(name.get(i));
+                }else if(name.get(i).getName() == GOLD_GATE){
+                    messengers = new Messenger(name.get(i));
+                }else if(name.get(i).getName() == FOOLS_LANDING){
+                    pilots = new Pilot(name.get(i));
+                }
+            }
+            
             start();
             
             // Default tiles
-            diverDefaultTile = grid.getTiles().get(new Coords(2,1));   
+            diverDefaultTile = divers.getCurrentTile();
                 System.out.println("test X : " + diverDefaultTile.getCoords().getX());
                 System.out.println("test Y : " + diverDefaultTile.getCoords().getY());
-            engineerDefaultTile = grid.getTiles().get(new Coords(3,0));
-            explorerDefaultTile = grid.getTiles().get(new Coords(4,2));
-            messengerDefaultTile = grid.getTiles().get(new Coords(1,2));
-            navigatorDefaultTile = grid.getTiles().get(new Coords(3,1));
-            pilotDefaultTile = grid.getTiles().get(new Coords(3,2));
+            engineerDefaultTile = engineers.getCurrentTile();
+            explorerDefaultTile = explorers.getCurrentTile();
+            messengerDefaultTile = messengers.getCurrentTile();
+            navigatorDefaultTile = navigators.getCurrentTile();
+            pilotDefaultTile = pilots.getCurrentTile();
             
         }
         
@@ -62,7 +91,10 @@ public class GameController implements Observer {
             
             showTitle();
             registerPlayers();
-            gameTurn(players.get("test"));
+            gameTurn(players.get(0));
+            gameTurn(players.get(1));
+            gameTurn(players.get(2));
+            gameTurn(players.get(3));
             
         }
         
@@ -101,11 +133,11 @@ public class GameController implements Observer {
 
                 System.out.print("\nPlayer " + (i+1) + "\npseudo :");
                 String name = scan.nextLine().toLowerCase();
-                while (this.getPlayers().get(name) != null) {
-                    System.out.print("\tPseudo already taken !" 
-                            + "\npseudo :");
-                    name = scan.nextLine();
-                }  
+//                while (this.getPlayers().get(name) != null) {
+//                    System.out.print("\tPseudo already taken !" 
+//                            + "\npseudo :");
+//                    name = scan.nextLine();
+//                }  
                 if (!name.equals("")) {
                     System.out.print("role :");
                     String roleName = scan.nextLine().toLowerCase();
@@ -127,27 +159,27 @@ public class GameController implements Observer {
 
                     switch (roleName.toLowerCase()) {
                             case "diver" :
-                                players.put(name, new Player(new Diver(diverDefaultTile), name));
+                                players.add(new Player(divers, name));
                                 enableAdventurer.remove(diver);
                                 break;
                             case "engineer" :
-                                players.put(name, new Player(new Engineer(engineerDefaultTile), name));
+                                players.add(new Player( engineers, name));
                                 enableAdventurer.remove(engineer);
                                 break;
                             case "explorer" :
-                                players.put(name, new Player(new Explorer(explorerDefaultTile), name));
+                                players.add(new Player( explorers, name));
                                 enableAdventurer.remove(explorer);
                                 break;
                             case "messenger" :
-                                players.put(name, new Player(new Messenger(messengerDefaultTile), name));
+                                players.add(new Player(messengers, name));
                                 enableAdventurer.remove(messenger);
                                 break;
                             case "navigator" :
-                                players.put(name, new Player(new Navigator(navigatorDefaultTile), name));
+                                players.add( new Player(navigators, name));
                                 enableAdventurer.remove(navigator);
                                 break;
                             case "pilot" :
-                                players.put(name, new Player(new Pilot(diverDefaultTile), name));
+                                players.add(new Player(pilots, name));
                                 enableAdventurer.remove(pilot);
                                 break;
                     }
@@ -181,12 +213,14 @@ public class GameController implements Observer {
         
         public void gameTurn(Player currentPlayer){
             
+            System.out.println(currentPlayer.getAdventurer().getRoleName());
+            
             ArrayList<String> actions = new ArrayList<>();
                 actions.add(move);
                 actions.add(dry);
                 actions.add(pass);
             Scanner scan = new Scanner(System.in);
-            int i = currentPlayer.getAdventurer().getNumberActionMax();
+            int i = currentPlayer.getAdventurer().getNumberActionEnable();
             boolean quit = false;
             boolean correctNameAction = false;
             
@@ -212,15 +246,15 @@ public class GameController implements Observer {
                     
                     case "move" :
                         boolean containsMove = false;
-                        if (currentPlayer.getAdventurer().getRoleName() == "explorer") {
-                            grid.getAdjTiles(currentPlayer.getAdventurer().getCurrentTile());
-                        }
-                        grid.getDiagTiles(currentPlayer.getAdventurer().getCurrentTile());
+                        ArrayList<Tile> ListTiles = new ArrayList(currentPlayer.getAdventurer().enableMove(grid));
+                        grid.showEnableTiles(ListTiles);
+                        
+                        
                         System.out.print("Select X tile coord : ");
                                 int xMove = scan.nextInt();
                             System.out.print("Select Y tile coord : ");
                                 int yMove = scan.nextInt();
-                            if (grid.getTiles().containsKey(new Coords (xMove,yMove))) {
+                            if (grid.getTile(new Coords(xMove,yMove))) {
                                 containsMove = true;
                             }
                             while (containsMove != true) {
@@ -229,11 +263,11 @@ public class GameController implements Observer {
                                     xMove = scan.nextInt();
                                 System.out.println("Select Y tile coord : ");
                                     yMove = scan.nextInt();
-                                if (grid.getTiles().containsKey(new Coords (xMove,yMove))) {
+                                if (grid.getTile(new Coords(xMove,yMove))) {
                                 containsMove = true;
                                 }
                             }
-                            move(grid.getTiles().get(new Coords(xMove,yMove)), currentPlayer);
+                            move(grid.getWantedTile(new Coords(xMove,yMove)), currentPlayer);
                             currentPlayer.getAdventurer().decreaseActions();
                         break;
                         
@@ -247,7 +281,7 @@ public class GameController implements Observer {
                                 int xDry = scan.nextInt();
                             System.out.print("Select Y tile coord : ");
                                 int yDry = scan.nextInt();
-                            if (grid.getTiles().containsKey(new Coords (xDry,yDry))) {
+                            if (grid.getTile(new Coords(xDry,yDry))) {
                                 containsMove = true;
                             }
                             while (containsDry != true) {
@@ -256,11 +290,11 @@ public class GameController implements Observer {
                                     xDry = scan.nextInt();
                                 System.out.println("Select Y tile coord : ");
                                     yDry = scan.nextInt();
-                                if (grid.getTiles().containsKey(new Coords (xDry,yDry))) {
+                                if (grid.getTile(new Coords(xDry,yDry))) {
                                 containsMove = true;
                                 }
                             }
-                            dry(grid.getTiles().get(new Coords(xDry,yDry)), currentPlayer);
+                            dry(grid.getWantedTile(new Coords(xDry,yDry)), currentPlayer);
                             currentPlayer.getAdventurer().decreaseActions();
                         break;
                         
@@ -278,12 +312,12 @@ public class GameController implements Observer {
     /**
      * @return the players
      */
-    public HashMap<String,Player> getPlayers() {
+    public ArrayList<Player> getPlayers() {
         return players;
     }
     
     public void addPlayer(Player player) {
-        this.getPlayers().put(player.getPseudo(), player);
+        this.getPlayers().add(player);
     }
     
     public void setGrid(Grid grid) {

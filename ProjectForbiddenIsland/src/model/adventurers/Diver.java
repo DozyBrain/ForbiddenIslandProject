@@ -21,24 +21,23 @@ public class Diver extends Adventurer {
     @Override
      public ArrayList<Tile> enableMove(Grid grille) {
         
-        Tile tuileL;
+        Tile tileL;
         ArrayList<Tile> tuilesPossibles = super.enableMove(grille);
         
         ArrayList<Tile> tuilesTrav = new ArrayList();
         tuilesTrav.add(getCurrentTile());
         
         for (int i = 0; i < tuilesTrav.size(); i++) {
-            tuileL = tuilesTrav.get(i);
+            tileL = tuilesTrav.get(i);
             
 
-            for (Tile tuile : grille.getAdjTiles(tuileL)) {
+            for (Tile tile : grille.getAdjTiles(tileL)) {
                 
-                if (tuile.getCurrentState()!= State.GONE && !tuilesPossibles.contains(tuile))
-                    tuilesPossibles.add(tuile);
-                    tuile.show();
+                if (tile.getCurrentState()!= State.GONE && !tuilesPossibles.contains(tile))
+                    tuilesPossibles.add(tile);
                 
-                if (tuile.getCurrentState() != State.DRIED && !tuilesTrav.contains(tuile))
-                    tuilesTrav.add(tuile);
+                if (tile.getCurrentState() != State.DRIED && !tuilesTrav.contains(tile))
+                    tuilesTrav.add(tile);
             }
         }
         
